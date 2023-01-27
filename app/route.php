@@ -13,10 +13,10 @@ use MF\Init\Bootstrap;
                 'action' => 'index'
             );  
             
-            $routes['homeTeste'] = array(
-                'route' => '/home',
-                'controller' => 'IndexController',
-                'action' => 'indexTeste'
+            $routes['access'] = array(
+                'route' => '/access',
+                'controller' => 'AuthController',
+                'action' => 'access'
             );  
             
             

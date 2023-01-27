@@ -7,18 +7,14 @@
     class IndexController extends Action{
 
         public function index(){
+
+            if(!$_SESSION['auth']){
+                header('location: /access');
+            }
+
             $this->render('index');
         }
 
-        public function indexTeste(){
-
-            $this->render('indexTeste');
-            
-            $message = Container::getModel('Message');
-            $message->__set('message', 'Olá, Mundo!');
-            echo $message->showMessage('Olá, Mundo!');
-            
-        }
 
         
 
