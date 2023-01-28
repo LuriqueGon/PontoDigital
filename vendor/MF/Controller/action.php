@@ -2,6 +2,10 @@
 
     namespace MF\Controller;
 
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
     abstract class Action{
 
         protected $view;   
@@ -9,6 +13,7 @@
         public function __construct(){
             $this->view = new \stdClass();
             session_start();
+            $this->phpMailerStart();
         }
 
         protected function render($view, $layout = 'layout'){
@@ -42,6 +47,10 @@
                 require_once "../app/View/Configs/404Error.phtml";
             }
         }
-    }
 
-?>
+    private function phpMailerStart(){
+        $this->view->phpMailer['host'] = "example@gmail.com";
+        $this->view->phpMailer['username'] = "user@gmail.com";
+        $this->view->phpMailer['password'] = "123";
+    }
+}
