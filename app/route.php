@@ -19,6 +19,13 @@ use MF\Init\Bootstrap;
                 'action' => 'access'
             );  
             
+            $routes['teste'] = array(
+                'route' => '/teste',
+                'controller' => 'TesteController',
+                'action' => 'teste'
+            );  
+            
+            
             
             /*
             $routes['NomeDaRota'] = array(
