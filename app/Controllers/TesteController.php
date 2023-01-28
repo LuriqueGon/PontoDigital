@@ -6,7 +6,7 @@
 
     class TesteController extends Action{
         public function teste(){
-            $this->render('teste');
+            $this->render('teste', 'testeLay');
         }
     }
 
