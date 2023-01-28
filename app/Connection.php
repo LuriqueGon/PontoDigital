@@ -10,7 +10,7 @@
             try{
                 $conn = new PDO(
                     "mysql:host=localhost;". // Host do banco
-                    "dbname=mvc;". //Nome do banco
+                    "dbname=pontodigital;". //Nome do banco
                     "charset=utf8", //Tipo de char
                     "root", //Usuario
                     "" //Senha
