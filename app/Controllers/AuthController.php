@@ -15,8 +15,14 @@
         }
 
         public function employerLogin(){
+           
+
+            $empregado = Container::getModel('Empregado');
+            $empregado->__set('cod', $_POST['codEmployer']);
+            $empregado->__set('pin', $_POST['pinEmployer']);
+
             echo '<pre>';
-            var_dump($_POST);
+            var_dump($empregado);
             echo '</pre>';
         }
 
