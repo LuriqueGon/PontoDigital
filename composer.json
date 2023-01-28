@@ -1,18 +1,20 @@
 {
-    "vendor-name" : "Twitter Clone",
+    "vendor-name" : "Ponto Digital",
     "require":{
-        "php":">=7.0"
+        "php":">=7.0",
+        "phpmailer/phpmailer": "^6.7"
     },
     "author":[
         {
-            "name":"Lurique",
-            "email":"Luiz.prog.henri@gmail.com"
+            "name":"Lurique / Bernardo",
+            "email":"Luiz.prog.henri@gmail.com / XXXX@XXX.XXX"
         }
     ],
     "autoload":{
         "psr-4":{
             "App\\":"./app/",
-            "MF\\":"./vendor/MF/"
+            "MF\\":"./vendor/MF/",
+            "Config\\": "./vendor/Config/"
         }
     }
 }
