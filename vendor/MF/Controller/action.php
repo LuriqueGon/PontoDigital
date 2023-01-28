@@ -14,6 +14,8 @@
             $this->view = new \stdClass();
             session_start();
             $this->phpMailerStart();
+            $this->defineConst();
+            
         }
 
         protected function render($view, $layout = 'layout'){
@@ -52,5 +54,9 @@
         $this->view->phpMailer['host'] = "example@gmail.com";
         $this->view->phpMailer['username'] = "user@gmail.com";
         $this->view->phpMailer['password'] = "123";
+    }
+
+    private function defineConst(){
+        define("VERSION", 'v-1.0.0');
     }
 }

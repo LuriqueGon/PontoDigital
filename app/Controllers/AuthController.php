@@ -12,6 +12,16 @@
         public function access(){
             $this->render('access', 'authLay');
 
+        }
+
+        public function employerLogin(){
+            echo '<pre>';
+            var_dump($_POST);
+            echo '</pre>';
+        }
+
+        private function phpMailer(){
+
             $mail = new PHPMailer(true);
             $mail->setLanguage('pt-br');
 

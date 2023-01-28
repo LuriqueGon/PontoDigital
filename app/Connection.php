@@ -19,6 +19,8 @@
                 
             }catch(PDOException $e){
                 // Tratativa de Erros
+
+                // Enviar para uma tabela todos os erros
             }
         }
     }

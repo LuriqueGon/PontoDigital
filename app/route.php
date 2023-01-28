@@ -7,24 +7,36 @@ use MF\Init\Bootstrap;
 
         protected function initRoutes(){
 
+            // INDEX
             $routes['home'] = array(
                 'route' => '/',
                 'controller' => 'IndexController',
                 'action' => 'index'
             );  
-            
+
+
+            // AUTH
             $routes['access'] = array(
                 'route' => '/access',
                 'controller' => 'AuthController',
                 'action' => 'access'
-            );  
+            ); 
+
+            $routes['employerLogin'] = array(
+                'route' => '/auth/employer/login',
+                'controller' => 'AuthController',
+                'action' => 'employerLogin'
+            ); 
+             
             
+            // TESTE
             $routes['teste'] = array(
                 'route' => '/teste',
                 'controller' => 'TesteController',
                 'action' => 'teste'
             );  
             
+
             
             
             /*
