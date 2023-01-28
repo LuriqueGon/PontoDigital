@@ -1,0 +1,32 @@
+<?php
+
+use MF\Model\Container;
+
+if (isset($_SESSION['msg']) && !empty($_SESSION['msg'])) {
+    
+
+    // $message->cleanMessage();
+    // unset($message);
+    // unset($msg);
+}
+
+?>
+
+<?php if (isset($_SESSION['msg'])) { ?>
+
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="..." class="rounded mr-2" alt="...">
+            <strong class="mr-auto"><?php echo $_SESSION['type'] ?></strong>
+            <small class="text-muted"><?php echo $_SESSION['time'] ?> seconds ago</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            <?php echo $_SESSION['msg'] ?>
+        </div>
+    </div>
+    
+    <?php echo '<script>delToast()</script>'?>
+<?php } ?>

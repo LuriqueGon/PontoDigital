@@ -75,6 +75,22 @@
     </div>
 </section>
 
+<?php
+    if (isset($_GET['action'])) {
+        if ($_GET['action'] == 1) {
+            $this->view->type = 'danger';
+            $this->view->msg = 'CPF incorreto ou inexistente';
+        } else if ($_GET['action'] == 2) {
+            $this->view->type = 'danger';
+            $this->view->msg = 'CPF precisa ter 11 Caracteres (Sem pontuação)';
+        }
+        $this->view->time = '1 second ago';
+        $this->view->page = 'usuarios';
+        $this->loadComponents('toast');
+        echo '<script>delToast()</script>';
+    }
+?>
+
 
 <script>
 	const loginOption = (id) =>{

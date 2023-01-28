@@ -28,6 +28,13 @@ use MF\Init\Bootstrap;
                 'action' => 'employerLogin'
             ); 
              
+            $routes['logout'] = array(
+                'route' => '/logout',
+                'controller' => 'AuthController',
+                'action' => 'logout'
+            ); 
+             
+            
             
             // TESTE
             $routes['teste'] = array(

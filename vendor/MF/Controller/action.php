@@ -41,6 +41,7 @@
         protected function loadComponent($component){
             $atualClass =  strtolower(str_replace('Controller', '',str_replace('App\\Controllers\\', '', get_class($this)))); 
             $this->view->atualClass['Component'] = $atualClass;
+            
             if(file_exists("../app/View/components/$atualClass/$component.phtml")){
                 require_once "../app/View/components/$atualClass/$component.phtml";
             }else if(file_exists("../app/View/components/main/$component.phtml")){

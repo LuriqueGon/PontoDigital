@@ -10,8 +10,19 @@
     class AuthController extends Action{
 
         public function access(){
+            if(isset($_SESSION['auth']) && $_SESSION['auth']){
+                $msg = Container::getModel('Message');
+                $msg->__set('type','danger');
+                $msg->__set('msg','Você já está logado, caso queira trocar de conta. Clique em sair');
+                $msg->setMessage();
+            }
             $this->render('access', 'authLay');
 
+        }
+
+        public function logout(){
+            session_destroy();
+            header('location: /access');
         }
 
         public function employerLogin(){
@@ -24,6 +35,27 @@
             echo '<pre>';
             var_dump($empregado);
             echo '</pre>';
+
+            $user = $empregado->autentication();
+
+            if($user){
+                $_SESSION['auth'] = true;
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['nome'] = $user['nome'];
+                $_SESSION['perfil'] = $user['perfil'];
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['permissao'] = $user['permissao'];
+                $_SESSION['empregador'] = $user['tipo'];
+            }
+            
+            
+
+
+            $msg = Container::getModel('Message');
+            $msg->__set('type','success');
+            $msg->__set('msg','Acesso autorizado');
+            $msg->setMessage('/');     
+        
         }
 
         private function phpMailer(){
