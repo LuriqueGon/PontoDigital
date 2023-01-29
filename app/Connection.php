@@ -8,7 +8,7 @@
 
 
         public static function getDB(){
-            $dbType = 'public';
+            $dbType = 'private';
             if($dbType == 'public'){
                 try{
                     $conn = new PDO(
@@ -33,7 +33,7 @@
                         "dbname=pontodigital;". 
                         "charset=utf8", 
                         "root", 
-                        "" 
+                        "root" 
                     );
                     return $conn;
                     
