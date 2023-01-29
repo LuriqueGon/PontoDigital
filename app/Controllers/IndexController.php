@@ -11,12 +11,13 @@
             if(!$_SESSION['auth']){
                 header('location: /access');
             }
-
-            echo '<pre>';
-            var_dump($_SESSION);
-            echo '</pre>';
-
+            
             $this->render('index');
+
+            // echo '<pre>';
+            // var_dump($_SESSION);
+            // echo '</pre>';
+
         }
 
 

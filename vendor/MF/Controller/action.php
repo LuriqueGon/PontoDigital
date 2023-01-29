@@ -46,6 +46,8 @@
                 require_once "../app/View/components/$atualClass/$component.phtml";
             }else if(file_exists("../app/View/components/main/$component.phtml")){
                 require_once "../app/View/components/main/$component.phtml";
+            }else if($component == "toast"){
+                require_once "../app/View/components/main/toast.phtml";
             }else{
                 require_once "../app/View/Configs/404Error.phtml";
             }

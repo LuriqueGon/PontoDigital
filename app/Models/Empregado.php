@@ -14,9 +14,7 @@ use MF\Model\Model;
                 echo 1;
                 
                 $msg = Container::getModel('Message');
-                $msg->__set('type','danger');
-                $msg->__set('msg','Dados Inexistentes e/ou incoerentes');
-                $msg->setMessage('back');
+                $msg->setMessage('Dados Inexistentes e/ou incoerentes','danger','back');
                 
             }else{
                 return $this->haveAccount();

@@ -12,30 +12,36 @@
         public function access(){
             if(isset($_SESSION['auth']) && $_SESSION['auth']){
                 $msg = Container::getModel('Message');
-                $msg->__set('type','danger');
-                $msg->__set('msg','Você já está logado, caso queira trocar de conta. Clique em sair');
-                $msg->setMessage();
+                $msg->setMessage('Você já está logado, caso queira trocar de conta. Clique em sair','danger','/');
+                exit;
             }
-            $this->render('access', 'authLay');
 
+            $this->render('access', 'authLay');
         }
 
         public function logout(){
-            session_destroy();
-            header('location: /access');
+            unset($_SESSION['auth']);
+            unset($_SESSION['user_id']);
+            unset($_SESSION['nome']);
+            unset($_SESSION['perfil']);
+            unset($_SESSION['email']);
+            unset($_SESSION['permissao']);
+            unset($_SESSION['empregador']);
+            $msg = Container::getModel('Message');
+            $msg->setMessage('Logout realizado com sucesso','success','/access');
         }
 
         public function employerLogin(){
-           
+
+            if(isset($_SESSION['auth']) && $_SESSION['auth']){
+                $msg = Container::getModel('Message');
+                $msg->setMessage('Você já está logado, caso queira trocar de conta. Clique em sair','danger','/');
+                exit;
+            }
 
             $empregado = Container::getModel('Empregado');
             $empregado->__set('cod', $_POST['codEmployer']);
             $empregado->__set('pin', $_POST['pinEmployer']);
-
-            echo '<pre>';
-            var_dump($empregado);
-            echo '</pre>';
-
             $user = $empregado->autentication();
 
             if($user){
@@ -46,16 +52,10 @@
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['permissao'] = $user['permissao'];
                 $_SESSION['empregador'] = $user['tipo'];
+
+                $msg = Container::getModel('Message');
+                $msg->setMessage('Acesso autorizado','success','/');
             }
-            
-            
-
-
-            $msg = Container::getModel('Message');
-            $msg->__set('type','success');
-            $msg->__set('msg','Acesso autorizado');
-            $msg->setMessage('/');     
-        
         }
 
         private function phpMailer(){
