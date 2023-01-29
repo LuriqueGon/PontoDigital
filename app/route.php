@@ -22,12 +22,19 @@ use MF\Init\Bootstrap;
                 'action' => 'access'
             ); 
 
+            $routes['employeLogin'] = array(
+                'route' => '/auth/empregado/login',
+                'controller' => 'AuthController',
+                'action' => 'collaborLogin'
+            ); 
+             
             $routes['employerLogin'] = array(
-                'route' => '/auth/employer/login',
+                'route' => '/auth/empregador/login',
                 'controller' => 'AuthController',
                 'action' => 'employerLogin'
             ); 
              
+            
             $routes['logout'] = array(
                 'route' => '/logout',
                 'controller' => 'AuthController',

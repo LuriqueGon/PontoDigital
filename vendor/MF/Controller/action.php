@@ -2,7 +2,8 @@
 
     namespace MF\Controller;
 
-    use PHPMailer\PHPMailer\PHPMailer;
+use MF\Model\Container;
+use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
 
@@ -61,5 +62,20 @@
 
     private function defineConst(){
         define("VERSION", 'v-1.0.0');
+    }
+
+    public function restrict(){
+        if(!$_SESSION['auth']){
+            $msg = Container::getModel('Message');
+            $msg->setMessage('Você precisa está logado para ter acesso a página restrita','danger','/access');
+        }
+    }
+
+    public function dontRestrict(){
+        if(isset($_SESSION['auth']) && $_SESSION['auth']){
+            $msg = Container::getModel('Message');
+            $msg->setMessage('Você já está logado, caso queira trocar de conta. Clique em sair','danger','/');
+            exit;
+        }
     }
 }

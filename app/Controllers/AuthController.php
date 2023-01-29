@@ -10,34 +10,30 @@
     class AuthController extends Action{
 
         public function access(){
-            if(isset($_SESSION['auth']) && $_SESSION['auth']){
-                $msg = Container::getModel('Message');
-                $msg->setMessage('Você já está logado, caso queira trocar de conta. Clique em sair','danger','/');
-                exit;
-            }
+            $this->dontRestrict();
 
             $this->render('access', 'authLay');
         }
 
         public function logout(){
-            unset($_SESSION['auth']);
-            unset($_SESSION['user_id']);
-            unset($_SESSION['nome']);
-            unset($_SESSION['perfil']);
-            unset($_SESSION['email']);
-            unset($_SESSION['permissao']);
-            unset($_SESSION['empregador']);
-            $msg = Container::getModel('Message');
-            $msg->setMessage('Logout realizado com sucesso','success','/access');
+            $this->restrict();
+            if(isset($_SESSION['auth'])){
+                unset($_SESSION['auth']);
+                unset($_SESSION['user_id']);
+                unset($_SESSION['nome']);
+                unset($_SESSION['perfil']);
+                unset($_SESSION['email']);
+                unset($_SESSION['permissao']);
+                unset($_SESSION['empregador']);
+                $msg = Container::getModel('Message');
+                $msg->setMessage('Logout realizado com sucesso','success','/access');
+
+            }
         }
 
-        public function employerLogin(){
+        public function collaborLogin(){
 
-            if(isset($_SESSION['auth']) && $_SESSION['auth']){
-                $msg = Container::getModel('Message');
-                $msg->setMessage('Você já está logado, caso queira trocar de conta. Clique em sair','danger','/');
-                exit;
-            }
+            $this->dontRestrict();
 
             $empregado = Container::getModel('Empregado');
             $empregado->__set('cod', $_POST['codEmployer']);
@@ -51,10 +47,40 @@
                 $_SESSION['perfil'] = $user['perfil'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['permissao'] = $user['permissao'];
-                $_SESSION['empregador'] = $user['tipo'];
+                $_SESSION['status'] = "Empregado";
 
                 $msg = Container::getModel('Message');
                 $msg->setMessage('Acesso autorizado','success','/');
+            }
+        }
+
+        public function employerLogin(){
+            $this->dontRestrict();
+
+            echo '<pre>';
+            var_dump($_POST);
+            echo '</pre>';
+
+            $empregador = Container::getModel('Empregador');
+            $empregador->__set('email', $_POST['employerEmail']);
+            $empregador->__set('senha', $_POST['employerPassword']);
+            $user = $empregador->autentication();
+
+            echo '<pre>';
+            var_dump($user);
+            echo '</pre>';
+
+            if($user){
+                $_SESSION['auth'] = true;
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['nome'] = $user['nome'];
+                $_SESSION['perfil'] = $user['perfil'];
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['permissao'] = $user['permissao'];
+                $_SESSION['status'] = "Empregador";
+
+                $msg = Container::getModel('Message');
+                $msg->setMessage('Acesso autorizado para o empregador','success','/');
             }
         }
 
