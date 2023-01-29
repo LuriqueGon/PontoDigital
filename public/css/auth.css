@@ -1,55 +1,61 @@
-input[type=number]::-webkit-inner-spin-button { 
-    -webkit-appearance: none;
-    
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
-input[type=number] { 
-   -moz-appearance: textfield;
-   appearance: textfield;
-
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
-body{
-    width: 100vw;
-    height: 100vh;
-    position: relative;
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    #0c120cff,
+    #090c9bff,
+    #00d4ffff,
+    #3066beff,
+    #ceb7b3ff
+  );
 }
 
-a{
-    text-decoration: none;
-    color: inherit;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-section.accessContainer{
-    width: 360px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+section.accessContainer {
+  width: 360px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.login-option{
-    list-style: none;
-    align-items: center;
-    border-top: 2px solid blue;
-    border-radius: 4px;
-    background: white;
-    text-transform: uppercase;
+.login-option {
+  list-style: none;
+  align-items: center;
+  border-top: 2px solid blue;
+  border-radius: 4px;
+  background: white;
+  text-transform: uppercase;
 }
-.login-option li{
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
+.login-option li {
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
 }
-.login-option li.active{
-    background-color: greenyellow;
+.login-option li.active {
+  background-color: greenyellow;
 }
 
-.login-box .card .card-body{
-    display: none;
+.login-box .card .card-body {
+  display: none;
 }
-.login-box .card .card-body .login-box-msg{
-    text-align: center;
+.login-box .card .card-body .login-box-msg {
+  text-align: center;
 }
-.show{
-    display: block!important;
+.show {
+  display: block !important;
 }
