@@ -2,79 +2,33 @@ const data = () => {
     let dateToday = new Date();
     let day = dateToday.getDate();
     let month = dateToday.getMonth() + 1
-    let year = dateToday.getFullYear()
 
     day = day >= 10 ? day : '0' + day
 
-    switch (month) {
-        case 1:
-            month = "Janeiro"
-            break
-        case 2:
-            month = "Fevereiro"
-            break
-        case 3:
-            month = "Março"
-            break
-        case 4:
-            month = "Abril"
-            break
-        case 5:
-            month = "Maio"
-            break
-        case 6:
-            month = "Junho"
-            break
-        case 7:
-            month = "Julho"
-            break
-        case 8:
-            month = "Agosto"
-            break
-        case 9:
-            month = "Setembro"
-            break
-        case 10:
-            month = "Outubro"
-            break
-        case 11:
-            month = "Novembro"
-            break
-        case 12:
-            month = "Dezembro"
-            break
-
-    }
+    month = month == 1 ? "Janeiro" : month
+    month = month == 2 ? "Fevereiro" : month
+    month = month == 3 ? "Março" : month
+    month = month == 4 ? "Abril" : month
+    month = month == 5 ? "Maio" : month
+    month = month == 6 ? "Junho" : month
+    month = month == 7 ? "Julho" : month
+    month = month == 8 ? "Agosto" : month
+    month = month == 9 ? "Setembro" : month
+    month = month == 10 ? "Outubro" : month
+    month = month == 11 ? "Novembro" : month
+    month = month == 12 ? "Dezembro" : month
 
     let dia = dateToday.getDay()
+    
+    dia = dia == 0 ? "Domingo" : dia
+    dia = dia == 1 ? "Segunda" : dia
+    dia = dia == 2 ? "Terça" : dia
+    dia = dia == 3 ? "Quarta" : dia
+    dia = dia == 4 ? "Quinta" : dia
+    dia = dia == 5 ? "Sexta" : dia
+    dia = dia == 6 ? "Sábado" : dia
 
-    switch (dia) {
-        case 0:
-            dia = "Domingo"
-            break
-        case 1:
-            dia = "Segunda"
-            break
-        case 2:
-            dia = "Terça"
-            break
-        case 3:
-            dia = "Quarta"
-            break
-        case 4:
-            dia = "Quinta"
-            break
-        case 5:
-            dia = "Sexta"
-            break
-        case 6:
-            dia = "Sabado"
-            break
-
-
-    }
-
-    $('.data').text(`${dia}, ${day} de ${month} de ${year}`)
+    $('.data').text(`${dia}, ${day} de ${month} de ${dateToday.getFullYear()}`)
 
 }
 const relogio = setInterval(() => {
