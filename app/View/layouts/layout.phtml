@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
 	<?php $this->loadComponent('metaTags'); ?>
-	<?php $this->loadComponent('bootstrap'); ?>
-	<?php $this->loadComponent('fontAwesome'); ?>
-	<?php $this->loadComponent('jquery'); ?>
-
-	<!-- TITTLE -->
-	<title></title>
+	<?php $this->loadComponent('CDNs'); ?>
+	<?php $this->loadComponent('favico'); ?>
+	<link rel="stylesheet" href="/css/relogio.css">
+	<link rel="stylesheet" href="/css/baterPonto.css">
+	<title>Ponto Digital | HOME |</title>
 </head>
+
 <body>
+
+	<?php $this->loadComponent('toast')?>
 	<?php $this->content() ?>
+	
+
 </body>
+<script src="/script/relogio.js"></script>
+
 </html>

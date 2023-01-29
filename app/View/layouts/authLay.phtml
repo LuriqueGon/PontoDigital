@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    
+
 	<?php $this->loadComponent('metaTags'); ?>
-    
-	<?php $this->loadComponent('bootstrap'); ?>
-
-	<?php $this->loadComponent('fontAwesome'); ?>
-
-	<?php $this->loadComponent('jquery'); ?>
-
-
-    <!-- Styles -->
-
-    <link rel="stylesheet" href="/css/auth.css">
+	<?php $this->loadComponent('CDNs'); ?>
+	<?php $this->loadComponent('favico'); ?>
+	<link rel="stylesheet" href="/css/auth.css">
 
 	<!-- TITTLE -->
 	<title>Sessão de Acesso | Entre com usuario |</title>
 </head>
-<body class="hold-transition login-page">
+
+<body>
 
 	<?php $this->content() ?>
+	<?php $this->loadComponent('toast')?>
+
 	
 </body>
+<<<<<<< HEAD
 <script src="/script/changeMenu.js">
 
 </script>
+=======
+
+>>>>>>> f22ff1c96ebefbcfeaa3b46b4f67f2a10a56768b
 </html>

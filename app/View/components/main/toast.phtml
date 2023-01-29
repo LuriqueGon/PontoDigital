@@ -1,0 +1,47 @@
+<?php
+
+use MF\Model\Container;
+
+if (isset($_SESSION['msg']) && !empty($_SESSION['msg'])) {
+
+    $msg = Container::getModel('message');
+    $message = $msg->getMessage();
+
+    $this->view->type = $message['type'];
+    $this->view->message = $message['msg'];
+    $this->view->time = $message['time'];
+
+    $msg->cleanMessage();
+
+    unset($message);
+    unset($msg);
+    
+    ?>
+
+    <script>
+        function delToast() {
+            setTimeout(() => {
+                apagarToast()
+            }, 3500);
+        }
+
+        function apagarToast() {
+            $('#toast').remove()
+        }
+    </script>
+
+    <div class="toast border-<?php echo $this->view->type ?>" role="alert" id="toast" aria-live="assertive" aria-atomic="true" style=" position: absolute; top: 5rem; right: 8rem; opacity: 1;">
+        <div class="toast-header">
+            <strong class="me-auto text-<?php echo $this->view->type ?>"><?php echo $this->view->type ?></strong>
+            <small class="text-muted"><?php echo $this->view->time ?> seconds ago</small>
+            <button type="button" class="btn-close close" data-bs-dismiss="toast" aria-label="Close" onclick="$('#toast').remove()"></button>
+        </div>
+        <div class="toast-body">
+            <?php echo $this->view->message ?>
+        </div>
+    </div>
+
+    <script>
+        delToast()
+    </script>
+<?php } ?>

@@ -7,12 +7,12 @@
     class IndexController extends Action{
 
         public function index(){
-
-            if(!$_SESSION['auth']){
-                header('location: /access');
+            $this->restrict();
+            if(isset($_SESSION['permissao']) && $_SESSION['permissao'] >= 3){
+                $this->render('indexAdmin');
+            }else{
+                $this->render('index');
             }
-
-            $this->render('index');
         }
 
 

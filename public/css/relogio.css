@@ -1,0 +1,52 @@
+.relogio{
+    width: 35%;
+    margin: 2rem auto;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.4rem;
+    font-family: arial;
+    display: flex;
+}
+.relogio .sub-relogio{
+    width: 10rem;
+    padding: 0.5rem;
+    color: white;
+}
+.relogio .sub-relogio .top{
+    background: #04ade6	;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    font-weight: normal;
+    border-bottom: 2px solid rgba(0, 0, 139, 0.3);
+    text-shadow: 0.1rem 0.1rem 0.2rem black;
+}
+.relogio .sub-relogio .bottom{
+    background: #1E90FF;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    font-size: 1.1rem;
+    text-shadow: 0.1rem 0.1rem 0.2rem black;
+}
+
+.relogio .sub-relogio.change .top{
+    background: #DC143C;
+    border-bottom: 2px solid rgba(120, 60, 60, 0.6)
+}
+.relogio .sub-relogio.change .bottom{
+    background: #9b0725;
+}
+.data{
+    text-align: center;
+    margin: -2rem 0 0 0;
+    font-size: 1.4rem;
+    color: #ffae00;
+    font-family: "verdana";
+    text-shadow: .1rem .1rem .3rem rgba(0, 0, 0, 0.35);
+}
