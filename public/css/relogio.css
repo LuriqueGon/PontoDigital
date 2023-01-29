@@ -1,11 +1,8 @@
 .relogio{
-    width: 35%;
-    margin: 2rem auto;
-    text-align: center;
-    padding: 1rem;
-    font-size: 1.4rem;
-    font-family: arial;
     display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
 }
 .relogio .sub-relogio{
     width: 10rem;

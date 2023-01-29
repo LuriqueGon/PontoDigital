@@ -1,14 +1,15 @@
-<section class="accessContainer">
-    <div style="width: 360px;">
-        <ul class="login-option d-flex align-center p-0 mb-0 justify-content-between">
-            <li class="active p-3" onclick="loginOption(0)" id="func">Empregador</li>
-            <li class="p-3" onclick="loginOption(1)" id="client">Colaborador</li>
+<section class="flex flex-col items-center justify-center w-screen h-screen">
+    <div class="w-80 mb-2 border-b-1 border-white">
+        <ul class="flex text-center p-0 mb-0 w-full">
+            <li class="active p-3 border-b-2 border-black active:bg-lime-400 hover:bg-lime-300 cursor-pointer w-full rounded-t-md rounded-l-md active:border-b-green-500" onclick="loginOption(0)" id="func">Empregador</li>
+            <li class="p-3 border-b-2 border-black active:bg-lime-400 hover:bg-lime-300 cursor-pointer w-full rounded-t-md rounded-r-md active:border-b-green-500" onclick="loginOption(1)" id="client">Colaborador</li>
         </ul>
     </div>
-    <div class="login-box">
+    <div class="bg-black w-80">
         <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
 
+        <div class="max-w-[500px] bg-white rounded mt-1">
+            <!-- 
             <div class="card-body fade show" id="cardFunc">
                 <div class="card-header text-center mb-3">
                     <a href="/" class="h1">Empregador</a>
@@ -39,8 +40,8 @@
                     </div>
                 </form>
             </div>
-
-            <div class="card-body fade" id="cardClient">
+-->
+            <div class="card-body fad show" id="cardClient">
                 <div class="card-header text-center mb-3">
                     <a href="/" class="h1">Colaborador</a>
                 </div>

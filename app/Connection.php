@@ -12,7 +12,7 @@
                     "dbname=pontodigital;". 
                     "charset=utf8", 
                     "root", 
-                    "" 
+                    "root" 
                 );
                 return $conn;
                 
