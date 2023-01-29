@@ -1,0 +1,12 @@
+.baterPonto{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 100%;
+    border: 2px solid;
+    cursor: pointer;
+    position: absolute;
+    right: 38%;
+    top: 25rem;
+    transform: translate(-50%, -50%);
+    /* background: rgba(100,255,0,.7); */
+}
