@@ -1,3 +1,16 @@
-<?php $this->loadComponent('relogio') ?>
+<?php
 
-<img src="/img/digital.svg" class="baterPonto">
+use MF\Model\Container;
+
+ $this->loadComponent('relogio') ?>
+<?php
+
+    $ponto = Container::getModel('ponto');
+    $ponto->__set('id', $_SESSION['user_id']);
+    $ponto->__set('data', Date('Y-m-d'));
+
+    if($ponto->PontoEntradaBatido() && $ponto->getPontoBatido()){?>
+        <img src="/img/digital.svg" class="baterPonto pontoBatido pontoOff" onclick="baterPonto(<?php echo $_SESSION['pin'] ?>)">
+    <?php }else{?>
+        <img src="/img/digital.svg" class="baterPonto pontoOff" onclick="baterPonto(<?php echo $_SESSION['pin'] ?>)">
+    <?php }?>

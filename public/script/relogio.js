@@ -2,8 +2,10 @@ const data = () => {
     let dateToday = new Date();
     let day = dateToday.getDate();
     let month = dateToday.getMonth() + 1
+    let month2 = dateToday.getMonth() + 1
 
     day = day >= 10 ? day : '0' + day
+    month2 = month2 >= 10 ? month2 : '0' + month2
 
     month = month == 1 ? "Janeiro" : month
     month = month == 2 ? "Fevereiro" : month
@@ -28,7 +30,9 @@ const data = () => {
     dia = dia == 5 ? "Sexta" : dia
     dia = dia == 6 ? "Sábado" : dia
 
-    $('.data').text(`${dia}, ${day} de ${month} de ${dateToday.getFullYear()}`)
+    $('.data').html(`${dia}, <span id="day">${day}</span> de ${month} de <span id="year">${dateToday.getFullYear()}</span> <input type="hidden" id="month" value="${month2}">`)
+
+    
 
 }
 const relogio = setInterval(() => {
@@ -45,7 +49,9 @@ const relogio = setInterval(() => {
     $('#minute').text(minute)
     $('#second').text(second)
 
-
+    if(document.querySelector('.pontoOff')){
+        $('.pontoOff').removeClass('pontoOff')
+    }
 }, 1000)
 
 data()

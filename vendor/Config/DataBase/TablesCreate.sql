@@ -111,12 +111,13 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `pontodigital`.`RegistroDePonto` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `data` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `hora_entrada` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `hora_saida` TIMESTAMP NULL,
-  `intervalo_saida` TIMESTAMP NULL,
-  `intervalo_volta` TIMESTAMP NULL,
-  `totalHorasTrabalhadas` DECIMAL NULL,
+  `hora_entrada` TIME NOT NULL,
+  `hora_saida` TIME NULL,
+  `intervalo_saida` TIME NULL,
+  `intervalo_volta` TIME NULL,
+  `totalHorasTrabalhadas` TIME NULL,
   `colaborador_id` INT NOT NULL,
+  `pontoBatido` BOOLEAN DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX `fk_RegistroPontosColaboradores_colaborador1_idx` (`colaborador_id` ASC) VISIBLE,
   CONSTRAINT `fk_RegistroPontosColaboradores_colaborador1`

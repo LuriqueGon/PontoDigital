@@ -31,6 +31,15 @@ use MF\Model\Model;
 
             return $stmt->fetch(\PDO::FETCH_ASSOC);
         }
+
+        public function __set($attr, $value){
+            $this->$attr = $value;
+            return $this;
+        }
+
+        public function __get($attr){
+            return $this->$attr;
+        }
     }
 
 

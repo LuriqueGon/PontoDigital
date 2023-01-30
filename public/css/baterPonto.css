@@ -10,3 +10,9 @@
     transform: translate(-50%, -50%);
     /* background: rgba(100,255,0,.7); */
 }
+.pontoBatido{
+    border-color: yellow;
+}
+.pontoOff{
+    display: none;
+}

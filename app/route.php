@@ -40,7 +40,18 @@ use MF\Init\Bootstrap;
                 'controller' => 'AuthController',
                 'action' => 'logout'
             ); 
-             
+
+            // PONTO
+            $routes['registrarPonto'] = array(
+                'route' => '/registrarPonto/Entrada',
+                'controller' => 'AppController',
+                'action' => 'registrarPontoEntrada'
+            ); 
+            $routes['registrarPontoSaida'] = array(
+                'route' => '/registrarPonto/Saida',
+                'controller' => 'AppController',
+                'action' => 'registrarPontoSaida'
+            ); 
             
             
             // TESTE

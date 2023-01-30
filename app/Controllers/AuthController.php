@@ -48,6 +48,7 @@
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['permissao'] = $user['permissao'];
                 $_SESSION['status'] = "Empregado";
+                $_SESSION['pin'] = $user['pin'];
 
                 $msg = Container::getModel('Message');
                 $msg->setMessage('Acesso autorizado','success','/');

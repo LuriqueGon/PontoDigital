@@ -2,7 +2,7 @@
 
     namespace App\Controllers;
     use MF\Controller\Action;
-    use MF\Model\Model;
+    use MF\Model\Container;
 
     class NomeDoController extends Action{
         
