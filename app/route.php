@@ -19,7 +19,7 @@ use MF\Init\Bootstrap;
             $routes['access'] = array(
                 'route' => '/access',
                 'controller' => 'AuthController',
-                'action' => 'access'
+                'action' => 'index'
             ); 
 
             $routes['employeLogin'] = array(
@@ -42,6 +42,11 @@ use MF\Init\Bootstrap;
             ); 
 
             // PONTO
+            $routes['App'] = array(
+                'route' => '/registrarPonto',
+                'controller' => 'AppController',
+                'action' => 'index'
+            );
             $routes['registrarPonto'] = array(
                 'route' => '/registrarPonto/Entrada',
                 'controller' => 'AppController',

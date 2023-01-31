@@ -9,7 +9,7 @@
 
     class AuthController extends Action{
 
-        public function access(){
+        public function index(){
             $this->dontRestrict();
 
             $this->render('access', 'authLay');

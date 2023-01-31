@@ -25,34 +25,37 @@ use PHPMailer\PHPMailer\PHPMailer;
             if(file_exists("../app/View/layouts/$layout.phtml")){
                 require_once "../app/View/layouts/$layout.phtml";
             }else{
-                require_once "../app/View/Configs/404Error.phtml";
+                require_once "../app/View/pages/Configs/404Error.phtml";
             }
         }
 
         protected function content(){
             $atualClass =  strtolower(str_replace('Controller', '',str_replace('App\\Controllers\\', '', get_class($this)))); 
             $this->view->atualClass['Controller'] = $atualClass;
-            if(file_exists("../app/View/$atualClass/".$this->view->page.".phtml")){
-                require_once "../app/View/$atualClass/".$this->view->page.".phtml";
+            if(file_exists("../app/View/pages/$atualClass/".$this->view->page.".phtml")){
+                require_once "../app/View/pages/$atualClass/".$this->view->page.".phtml";
             }else{
-                require_once "../app/View/Configs/404Error.phtml";
+                require_once "../app/View/pages/Configs/404Error.phtml";
             }
         }
 
         protected function loadComponent($component){
             $atualClass =  strtolower(str_replace('Controller', '',str_replace('App\\Controllers\\', '', get_class($this)))); 
-            $this->view->atualClass['Component'] = $atualClass;
+            $this->view->atualClass['component'] = "../app/View/components/";
+            $this->view->atualClass['extension'] = ".phtml";
             
-            if(file_exists("../app/View/components/$atualClass/$component.phtml")){
-                require_once "../app/View/components/$atualClass/$component.phtml";
-            }else if(file_exists("../app/View/components/main/$component.phtml")){
-                require_once "../app/View/components/main/$component.phtml";
-            }else if(file_exists("../app/View/components/config/$component.phtml")){
-                require_once "../app/View/components/config/$component.phtml";
-            }else if($component == "toast"){
-                require_once "../app/View/components/main/toast.phtml";
+            if(file_exists($this->view->atualClass['component']."$atualClass/$component".$this->view->atualClass['extension'])){
+                require_once $this->view->atualClass['component']."$atualClass/$component".$this->view->atualClass['extension'];
+
+            }else if(file_exists($this->view->atualClass['component']."main/$component".$this->view->atualClass['extension'])){
+                require_once $this->view->atualClass['component']."main/$component".$this->view->atualClass['extension'];
+
+            }else if(file_exists($this->view->atualClass['component']."config/$component".$this->view->atualClass['extension'])){
+                require_once $this->view->atualClass['component']."config/$component".$this->view->atualClass['extension'];
+
             }else{
-                require_once "../app/View/Configs/404Error.phtml";
+                require_once "../app/View/pages/Configs/404Error".$this->view->atualClass['extension'];
+
             }
         }
 
