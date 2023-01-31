@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models;
+    namespace App\Models;
 
-use MF\Model\Container;
-use MF\Model\Model;
+    use MF\Model\Container;
+    use MF\Model\DAO;
 
-    Class Empregador extends Model{
-        public $email;
-        public $senha;
+    Class Empregador extends DAO{
+        private $email;
+        private $senha;
 
         public function autentication(){
             if(!$this->haveAccount()){
@@ -24,12 +24,7 @@ use MF\Model\Model;
 
         private function haveAccount(){
             $query = "SELECT * FROM empregado WHERE email = ? AND senha = ?";
-            $stmt = $this->db->prepare($query);
-            $stmt->bindValue(1, $this->__get('email'));
-            $stmt->bindValue(2, $this->__get('senha'));
-            $stmt->execute();
-
-            return $stmt->fetch(\PDO::FETCH_ASSOC);
+            return $this->select($query, array($this->__get('email'),$this->__get('senha')));
         }
 
         public function __set($attr, $value){

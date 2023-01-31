@@ -41,20 +41,20 @@ use PHPMailer\PHPMailer\PHPMailer;
 
         protected function loadComponent($component){
             $atualClass =  strtolower(str_replace('Controller', '',str_replace('App\\Controllers\\', '', get_class($this)))); 
-            $this->view->atualClass['component'] = "../app/View/components/";
-            $this->view->atualClass['extension'] = ".phtml";
+            $thisClass['component'] = "../app/View/components/";
+            $thisClass['extension'] = ".phtml";
             
-            if(file_exists($this->view->atualClass['component']."$atualClass/$component".$this->view->atualClass['extension'])){
-                require_once $this->view->atualClass['component']."$atualClass/$component".$this->view->atualClass['extension'];
+            if(file_exists($thisClass['component']."$atualClass/$component".$thisClass['extension'])){
+                require_once $thisClass['component']."$atualClass/$component".$thisClass['extension'];
 
-            }else if(file_exists($this->view->atualClass['component']."main/$component".$this->view->atualClass['extension'])){
-                require_once $this->view->atualClass['component']."main/$component".$this->view->atualClass['extension'];
+            }else if(file_exists($thisClass['component']."main/$component".$thisClass['extension'])){
+                require_once $thisClass['component']."main/$component".$thisClass['extension'];
 
-            }else if(file_exists($this->view->atualClass['component']."config/$component".$this->view->atualClass['extension'])){
-                require_once $this->view->atualClass['component']."config/$component".$this->view->atualClass['extension'];
+            }else if(file_exists($thisClass['component']."config/$component".$thisClass['extension'])){
+                require_once $thisClass['component']."config/$component".$thisClass['extension'];
 
             }else{
-                require_once "../app/View/pages/Configs/404Error".$this->view->atualClass['extension'];
+                require_once "../app/View/pages/Configs/404Error".$thisClass['extension'];
 
             }
         }
@@ -70,6 +70,10 @@ use PHPMailer\PHPMailer\PHPMailer;
     }
 
     public function restrict(){
+        if(!isset($_SESSION['auth'])){
+            $msg = Container::getModel('Message');
+            $msg->setMessage('Você precisa está logado para ter acesso a página restrita','danger','/access');
+        }
         if(!$_SESSION['auth']){
             $msg = Container::getModel('Message');
             $msg->setMessage('Você precisa está logado para ter acesso a página restrita','danger','/access');

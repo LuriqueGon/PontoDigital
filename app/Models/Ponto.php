@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models;
-use MF\Model\Model;
+    namespace App\Models;
+    use MF\Model\DAO;
 
-    Class Ponto extends Model{
+    Class Ponto extends DAO{
         private $id;
         private $data;
         private $hora_entrada;
@@ -23,30 +23,25 @@ use MF\Model\Model;
                 return true;
 
             }else{
-                header('location: /registrarPonto/Saida&='.$this->data.' '.$this->hora_entrada);
+                header('location: /registrarPonto/Saida&='.$this->__get('data').' '.$this->__get('hora_entrada'));
                 return false;
             }
         }
 
         private function IsPontoEntrada():bool{
-            $stmt = $this->db->prepare("SELECT * FROM `registrodeponto` WHERE colaborador_id = ? AND data LIKE ? AND pontoBatido = 0");
-            $stmt->bindValue(1, $this->__get('id'));
-            $stmt->bindValue(2, $this->__get('data')."%");
-            $stmt->execute();
+            $query = "SELECT * FROM `registrodeponto` WHERE colaborador_id = ? AND data LIKE ? AND pontoBatido = 0";
+            $value = $this->select($query,array($this->__get('id'),$this->__get('data')."%"));
 
-            if(!$stmt->fetch(\PDO::FETCH_ASSOC)){
+            if(!$value){
                 return true;
             }else{
                 return false;
             }
         }
         
-        private function baterPonto():void{
-            $stmt = $this->db->prepare("INSERT INTO registrodeponto (data, hora_entrada, colaborador_id) VALUES (?,?,?)");
-            $stmt->bindValue(1, $this->__get('data'));
-            $stmt->bindValue(2, $this->__get('hora_entrada'));
-            $stmt->bindValue(3, $this->__get('id'));
-            $stmt->execute();
+        private function baterPonto(){
+            $query = "INSERT INTO registrodeponto (data, hora_entrada, colaborador_id) VALUES (?,?,?)";
+            $this->query($query, array($this->__get('data'),$this->__get('hora_entrada'),$this->__get('id')));
         }
         // }
 
@@ -55,18 +50,15 @@ use MF\Model\Model;
 
             if(!$this->IsPontoEntrada()){
                 $this->__set('hora_entrada', $this->getHoraEntrada());
-                $horasTotais = gmdate('H:i:s', strtotime($this->hora_saida) - strtotime($this->hora_entrada) );
+                $horasTotais = gmdate('H:i:s', strtotime($this->__get('hora_saida')) - strtotime($this->__get('hora_entrada')) );
                 $this->__set('horasTotais', $horasTotais);
 
-                if($this->RegistrarSaida()){
-                    $this->finalizarPonto();
-                    return $this->registrarPontoEmpregado();
-                }
-            }else{
-                header('location: /registrarPonto/Entrada&data='.$this->data.' '.$this->hora_saida);
-                return false;
-            }
+                $this->RegistrarSaida();
+                $this->finalizarPonto();
+                $this->registrarPontoEmpregado();
 
+                return true;
+            }
         }
 
         private function getHoraEntrada():string{
@@ -79,45 +71,30 @@ use MF\Model\Model;
             return $stmt->fetch(\PDO::FETCH_ASSOC)['hora_entrada'];
         }
 
-        private function registrarSaida():bool{
+        private function registrarSaida(){
             $query = "UPDATE `registrodeponto` SET `hora_saida`=? , `totalHorasTrabalhadas`= ? WHERE `colaborador_id`= ? AND hora_entrada = ?";
-            $stmt = $this->db->prepare($query);
-            $stmt->bindValue(1, $this->__get('hora_saida'));
-            $stmt->bindValue(2, $this->__get('horasTotais'));
-            $stmt->bindValue(3, $this->__get('id'));
-            $stmt->bindValue(4, $this->__get('hora_entrada'));
-            return $stmt->execute();
+            $this->query($query, array($this->__get('hora_saida'),$this->__get('horasTotais'),$this->__get('id'),$this->__get('hora_entrada')));
         }
 
-        private function finalizarPonto():bool{
+        private function finalizarPonto(){
             $query = "UPDATE registroDePonto SET pontoBatido = 1 WHERE colaborador_id = ? AND hora_entrada = ?";
-            $stmt = $this->db->prepare($query);
-            $stmt->bindValue(1, $this->__get('id'));
-            $stmt->bindValue(2, $this->__get('hora_entrada'));
-            return $stmt->execute();
+            $this->query($query, array($this->__get('id'),$this->__get('hora_entrada')));
         }
 
-        private function registrarPontoEmpregado():bool{
+        private function registrarPontoEmpregado(){
             $this->__set('totalPontos', $this->getAllPontos() + 1);
 
             $query = "UPDATE empregado SET pontos_registrados = ? WHERE id = ?";
-            $stmt = $this->db->prepare($query);
-            $stmt->bindValue(1, $this->__get('totalPontos'));
-            $stmt->bindValue(2, $this->__get('id'));
-            return $stmt->execute();
-            
+            $this->query($query, array($this->__get('totalPontos'), $this->__get('id')));
         }
 
         // }
 
-        public function PontoEntradaBatido():bool{
+        public function PontoEntradaBatido(){
             $query = "SELECT * FROM `registrodeponto` WHERE colaborador_id = ? AND data LIKE ? AND hora_saida = NULL";
-            $stmt = $this->db->prepare($query);
-            $stmt->bindValue(1, $this->__get('id'));
-            $stmt->bindValue(2, $this->__get('data')."%");
-            $stmt->execute();
+            $value = $this->select($query, array($this->__get('id'),$this->__get('data')."%"));
 
-            if(!$stmt->fetch(\PDO::FETCH_ASSOC)){
+            if(!$value){
                 return true;
             }else{
                 return false;
@@ -126,12 +103,9 @@ use MF\Model\Model;
 
         public function getPontoBatido():bool{
             $query = "SELECT pontoBatido FROM `registrodeponto` WHERE colaborador_id = ? AND data LIKE ? AND pontoBatido = 0";
-            $stmt = $this->db->prepare($query);
-            $stmt->bindValue(1, $this->__get('id'));
-            $stmt->bindValue(2, $this->__get('data')."%");
-            $stmt->execute();
+            $value = $this->select($query, array($this->__get('id'),$this->__get('data')."%"));
 
-            if($stmt->fetch(\PDO::FETCH_ASSOC)){
+            if($value){
                 return true;
             }else{
                 return false;
@@ -140,17 +114,14 @@ use MF\Model\Model;
 
         private function getAllPontos():int { 
             $query = "SELECT pontos_registrados FROM `empregado` WHERE id = ? AND ativo = 1";
-            $stmt = $this->db->prepare($query);
-            $stmt->bindValue(1, $this->__get('id'));
-            $stmt->execute();
-            return $stmt->fetch(\PDO::FETCH_ASSOC)['pontos_registrados'];
+            return $this->select($query, array($this->__get('id')))['pontos_registrados'];
         }
 
         public function __set($attr, $value):void{
             $this->$attr = $value;
         }
 
-        public function __get($attr):string{
+        public function __get($attr){
             return $this->$attr;
         }
     }

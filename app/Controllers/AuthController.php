@@ -17,6 +17,7 @@
 
         public function logout(){
             $this->restrict();
+            
             if(isset($_SESSION['auth'])){
                 unset($_SESSION['auth']);
                 unset($_SESSION['user_id']);
@@ -52,6 +53,9 @@
 
                 $msg = Container::getModel('Message');
                 $msg->setMessage('Acesso autorizado','success','/');
+            }else{
+                $msg = Container::getModel('Message');
+                $msg->setMessage('Erros encontrados, tente novamente','danger','back');
             }
         }
 
