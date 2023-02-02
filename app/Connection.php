@@ -9,7 +9,7 @@
             try{
                 $conn = new PDO(
                     "mysql:host=localhost;". 
-                    "dbname=pontodigital;". 
+                    "dbname=pontodigitalteste;". 
                     "charset=utf8", 
                     "root", 
                     "root" 

@@ -2,14 +2,7 @@
 
     use MF\Model\Container;
 
-    $cargos = Container::getModel('GetBackup');
-
-    $cargos->backupCargos();
-    $cargos->backupCargosEmpregados();
-    $cargos->backupEmpregados();
-    $cargos->backupEmpregadores();
-    $cargos->backupRegistroDePonto();
-
-
+    $backup = Container::getModel('SetBackup');
+    $backup->startBackup();
     
 ?>
