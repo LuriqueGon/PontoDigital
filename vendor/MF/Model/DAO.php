@@ -3,7 +3,7 @@
     namespace MF\Model;
     use MF\Model\Model;
 
-    class DAO extends Model{
+    abstract class DAO extends Model{
         
         // QUERY {
         public function query($rawQuery, $params = array()){
