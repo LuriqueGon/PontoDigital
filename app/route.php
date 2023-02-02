@@ -59,7 +59,20 @@ use MF\Init\Bootstrap;
             ); 
             
             
-            // TESTE
+            // ADMIN
+            $routes['getBackup'] = array(
+                'route' => '/getBackup',
+                'controller' => 'AdminController',
+                'action' => 'getBackup'
+            ); 
+            $routes['setBackup'] = array(
+                'route' => '/setBackup',
+                'controller' => 'AdminController',
+                'action' => 'setBackup'
+            ); 
+            
+
+            // getBackup
             $routes['teste'] = array(
                 'route' => '/teste',
                 'controller' => 'TesteController',

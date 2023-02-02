@@ -2,77 +2,91 @@
 
 namespace App\Models;
 
+use Exception;
 use MF\Model\DAO;
+use ResourceBundle;
 
-class SetBackup extends DAO
-{
+class SetBackup extends DAO{
 
     protected $path = "../vendor/Config/backup";
-
     public function startBackup(){
-        $itens = scandir($this->path);
-        $allData = array();
+        $order = [
+            "cargo",
+            "empregador",
+            "empregado",
+            "cargo_empregado",
+            "registrodeponto"
+        ]; 
+        foreach ($order as $key => $table) {
 
-        foreach ($itens as $item) {
-            if(!in_array($item, array(".",".."))){
-                $tableName = pathinfo($this->path. "/" .$item)['filename'];
-                array_push($allData, $tableName);
-                $path = $this->path. "/" . $tableName. ".csv";
+            $path = $this->path."/".$table.".csv";
+            if(file_exists($path)){
 
-                if(file_exists($path)){
-                    $file = fopen($path, "r");
-            
-                    $headers = str_replace('', '', str_replace('|', '',explode(' | ',fgets($file))));
+                $file = fopen($path, "r");
+                $headers = $this->getHeaders($file);
+
+                while($row = fgets($file)){
                     $data = array();
-            
-                    while($row = fgets($file)){
-                        $rowData = str_replace('', '', str_replace('|', '',explode('|',$row)));
-                        $rowName = array();
-                        for($i = 0; $i<count($headers); $i++){
-                            $rowName[$headers[$i]] = $rowData[$i];
-                            $rowName['table'] = $tableName;
+                    $rowData = $this->getData($row);
+
+                    for($i = 0; $i<count($headers); $i++)array_push($data, $rowData[$i]);
+
+                    $query = $this->setQuery($table,$headers, $data);
+                    // echo $query;
+                    // echo "<br> <br> <br> <br> <hr>";
+                    try{
+
+                        $this->query($query);
+                    }catch(Exception $e){
+                        if($e->getCode() == 23000){
+                            exit;
                         }
-                        $this->insert($headers, $rowName, $tableName);
-                        
                     }
-            
-                    fclose($file);
-            
                 }
-                
-                
-    
+
+                fclose($file);
             }
         }
-        // echo "<pre>";
-        // var_dump($allData);
-        // echo "</pre> <br> <br>";
     }
 
-    private function insert(Array $headers, Array $data, String $table):void{
-        // echo '<pre>';
-        // var_dump($headers);
-        // echo '</pre>';
+
+    private function setQuery(String $table, Array $headers, Array $datas):string{
+        $query = $this->getParams($table, $datas, $headers);
+        
+        return $query;
+    }
+
+    private function getParams (String $table, Array $datas, Array $params):String{
         $query = "INSERT INTO $table (";
-        for($i = 0; $i<count($headers); $i++){
-            if($i<count($headers)-1){
-                $query .= $headers[$i].",";
+        foreach($params as $key => $value){
+            if($key < count($params)-1){
+                $query .= $value. "," ;
             }else{
-                $query .= $headers[$i];
+                $query .= $value;
             }
         }
-        $query .= ") VALUES (";
+        return $this->getDatas($query, $datas);
+    }
 
-        for($i = 0; $i<count($headers); $i++){
-            if($i<count($headers)-1){
-                $query .= "'". $data[$headers[$i]]."'".",";
+    private function getDatas(String $query, Array $datas):String{
+        $query .= ") VALUES (";
+        foreach($datas as $key => $value){
+            if($key < count($datas)-1){
+                $query .= "'".$value."'". "," ;
             }else{
-                $query .= "'".$data[$headers[$i]]."'";
+                $query .= "'".$value."'";
             }
-            
         }
         $query .= ")";
-        
-        $this->query($query);
+
+        return $query;
+    }
+    
+    private function getHeaders($file):array{
+        return str_replace('', '', str_replace('|', '',explode(' | ',fgets($file))));
+    }
+
+    private function getData($row):array{
+        return str_replace('', '', str_replace('|', '',explode('|',$row)));
     }
 }
