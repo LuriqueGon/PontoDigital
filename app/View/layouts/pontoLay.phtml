@@ -8,6 +8,7 @@
 
 	<link rel="stylesheet" href="/css/relogio.css">
 	<link rel="stylesheet" href="/css/baterPonto.css">
+	<link rel="stylesheet" href="/css/navbar.css">
 	
 	<title>Ponto Digital | Registro De Ponto |</title>
 </head>
@@ -15,7 +16,12 @@
 <body>
 
 	<?php $this->loadComponent('toast')?>
-	<?php $this->content() ?>
+	<main id="admin">
+		<?php $this->loadComponent('navbar')?>
+		<div class="content">
+			<?php $this->content() ?>
+		</div>
+	</main>
 	
 
 </body>

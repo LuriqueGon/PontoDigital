@@ -7,4 +7,4 @@ require "../vendor/autoload.php";
 $route = new \App\Route;
 
 ?>
-<script src="https://cdn.tailwindcss.com"></script>
+<!-- <script src="https://cdn.tailwindcss.com"></script> -->
