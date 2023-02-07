@@ -1,0 +1,109 @@
+<main id="cadastroContainer">
+    <div class="container" >
+        <h2>Cadastro de Empregados</h2>
+        <div class="img-wrapper">
+            <img src="/img/noPerfil.png" id="preview">
+        </div>
+        <form>
+            <!-- LINE 1 -->
+            <div class="inputLine">
+                <div class="inputCol">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" id="nome" required>
+                </div>
+                <div class="inputCol">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+            </div>
+            <!-- LINE 2 -->
+
+            <div class="inputLine">
+                <div class="inputCol min">
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha" id="senha" minlength="4" maxlength="12" required>
+                </div>
+                <div class="inputCol min">
+                    <label for="pin">PIN</label>
+                    <input type="password" name="pin" id="pin" minlength="4" maxlength="8" required>
+                </div>
+            </div>
+            <!-- LINE 3 -->
+
+            <div class="inputLine">
+                <div class="inputCol min">
+                    <label for="nascimento">Data de Nascimento</label>
+                    <input type="date" name="nascimento" id="nascimento" required>
+                </div>
+                <div class="inputCol min">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" name="telefone" id="telefone" required>
+                </div>
+            </div>
+
+            <!-- LINE 4 -->
+            <div class="inputLine">
+                <div class="inputCol">
+                    <label for="perfil">Foto de Perfil</label>
+                    <input type="file" name="perfil" id="perfil" required>
+                </div>
+                <div class="inputCol">
+                    <label for="perm">Permissão</label>
+                    <select name="perm" id="perm" required>
+                        <option value="">-- Selecione uma Opção --</option>
+                        <option value="1">A</option>
+                        <option value="2">B</option>
+                        <option value="3">C</option>
+                        <option value="4">D</option>
+                        <option value="5">E</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- LINE 5 -->
+            <div class="inputLine">
+                <div class="inputCol">
+                    <label for="sessao">Sessão</label>
+                    <select name="sessao" id="sessao" required>
+                        <option value="">-- Selecione uma Opção --</option>
+                        <option value="1">A1</option>
+                        <option value="2">B1</option>
+                        <option value="3">C1</option>
+                        <option value="4">D1</option>
+                        <option value="5">E1</option>
+                    </select>
+                </div>
+                <div class="inputCol">
+                    <label for="cargo">Cargo</label>
+                    <select name="cargo" id="cargo" required>
+                        <option value="">-- Selecione uma Sessão --</option>
+                        <option value="1">Estágiario</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- LINE 6 -->
+            <div class="inputLine allLine">
+                <div class="inputCol">
+                    <label for="sessao">Código do Empregador</label>
+                    <input type="text" name="cod" id="cod" value="####" required readonly style="background-color: black;color: white!important;">
+                </div>
+            </div>
+            <!-- LINE 7 -->
+
+            <div class="inputLine allLine noBorder">
+                <div class="inputCol">
+                    <button type="submit">Cadastrar</button>
+                </div>
+            </div>
+             <!-- LINE 8 -->
+
+            <div class="inputLine allLine noBorder">
+                <div class="inputCol" onclick="reset()">
+                    <button type="reset" id="cancel">Cancelar</button>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</main>

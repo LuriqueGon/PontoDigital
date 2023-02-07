@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<?php $this->loadComponent('metaTags'); ?>
+	<?php $this->loadComponent('CDNs'); ?>
+	<?php $this->loadComponent('favico'); ?>
+
+	<link rel="stylesheet" href="/css/sidebar.css">
+	<link rel="stylesheet" href="/css/empregadosCad.css">
+
+	<script src="/script/changeFile.js" defer></script>
+
+	
+	<title>Ponto Digital | Registro De Ponto |</title>
+</head>
+
+<body style="background-color: #eee;">
+
+	<?php $this->loadComponent('toast')?>
+	<main id="admin">
+		<?php $this->loadComponent('sidebar')?>
+		<div class="content">
+			<?php $this->content() ?>
+		</div>
+	</main>
+	
+
+</body>
+</html>

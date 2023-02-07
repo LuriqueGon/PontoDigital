@@ -1,8 +1,8 @@
 *{
     margin: 0;
     padding: 0;
-    list-style: none;
-    text-decoration: none;
+    list-style: none!important;
+    text-decoration: none!important;
     color: inherit;
     font-size: 16px;
 }
@@ -12,13 +12,19 @@ main#admin{
 nav.sidebar{
     width: 18%;
     height: 100vh;
-    position: fixed;
+    position: fixed!important;
     background: #bbb;
     position: relative;
 }
+nav.sidebar a{
+    color: inherit!important;
+}
+nav.sidebar ul{
+    padding: 0;
+}
 nav.sidebar ul li{
     text-align: center;
-    background: yellow;
+    background: rgba(255, 255, 0, 0.89);
     margin: 1rem 0;
     opacity: .8;
     padding: .4rem 0;
@@ -27,6 +33,10 @@ nav.sidebar ul li:hover{
     opacity: 1;
     cursor: pointer;
     color: #757575;
+}
+nav.sidebar ul li i{
+    padding-left: 1.5rem;
+    font-size: 1.3rem;
 }
 #sair{
     width: 100%;

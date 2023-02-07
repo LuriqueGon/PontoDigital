@@ -1,0 +1,30 @@
+<nav class="sidebar">
+    <ul>
+        <!-- PONTOS -->
+        <a href="/">
+            <li>Home <i class="fa-solid fa-house"></i></li>
+        </a>
+        <a href="#">
+            <li>Relatorio de pontos<i class="fa-solid fa-stopwatch-20"></i></li>
+        </a>
+        <a href="/registrarPonto">
+            <li>Registrar Ponto<i class="fa-solid fa-clock"></i></li>
+        </a>
+        <!-- EMPREGADOS -->
+        <?php if($_SESSION['permissao'] >= 3){ ?>
+            <a href="#">
+                <li>Empregados<i class="fa-solid fa-users"></i></li>
+            </a>
+            <a href="/auth/cadastrar/empregado">
+                <li>Cadastrar Empregado<i class="fa-solid fa-user-plus"></i></li>
+            </a>
+            <a href="#">
+                <li>Editar Empregado<i class="fa-solid fa-user-pen"></i></li>
+            </a>
+            
+        <?php } ?>
+    </ul>
+    <a href="/logout">
+        <div id="sair">Sair</div>
+    </a>
+</nav>

@@ -23,7 +23,7 @@
         }
 
         private function haveAccount(){
-            $query = "SELECT * FROM empregado WHERE email = ? AND senha = ?";
+            $query = "SELECT * FROM empregado LEFT JOIN empregador ON empregador.id = empregado.empregador_id WHERE email = ? AND senha = ?";
             return $this->select($query, array($this->__get('email'),$this->__get('senha')));
         }
 

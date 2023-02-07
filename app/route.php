@@ -8,7 +8,7 @@ use MF\Init\Bootstrap;
         protected function initRoutes(){
 
             // INDEX
-            $routes['home'] = array(
+            $routes['homePage'] = array(
                 'route' => '/',
                 'controller' => 'IndexController',
                 'action' => 'index'
@@ -16,7 +16,7 @@ use MF\Init\Bootstrap;
 
 
             // AUTH
-            $routes['access'] = array(
+            $routes['accessPage'] = array(
                 'route' => '/access',
                 'controller' => 'AuthController',
                 'action' => 'index'
@@ -42,7 +42,7 @@ use MF\Init\Bootstrap;
             ); 
 
             // PONTO
-            $routes['App'] = array(
+            $routes['pontoPage'] = array(
                 'route' => '/registrarPonto',
                 'controller' => 'AppController',
                 'action' => 'index'
@@ -72,7 +72,14 @@ use MF\Init\Bootstrap;
             ); 
             
 
-            // getBackup
+            // USER
+            $routes['cadastrarEmpregadoPage'] = array(
+                'route' => '/auth/cadastrar/empregado',
+                'controller' => 'UserController',
+                'action' => 'index'
+            );  
+
+            // TESTE
             $routes['teste'] = array(
                 'route' => '/teste',
                 'controller' => 'TesteController',

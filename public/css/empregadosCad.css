@@ -1,0 +1,98 @@
+/* Pre Form */
+#cadastroContainer{
+    max-width: 1080px;
+    margin: 1rem 0 2rem 19rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#cadastroContainer .container{
+    padding: 1.2rem 6rem;
+    border: 1px solid;
+}
+.container h2{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    font-weight: bold;
+    letter-spacing: .2rem;
+}
+.container .img-wrapper {
+    border-radius: 100%;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+.container .img-wrapper img#preview{
+    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Form */
+.container .inputLine{
+    width: 100%;
+    margin: 1rem;
+    display: flex;
+}
+.container .inputCol{
+    margin-right: 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.384);
+    border-radius: 2rem 2rem 1rem 0rem;
+    height: 80px!important;
+}
+.container .inputLine.allLine .inputCol{
+    margin: auto;
+}
+.container .inputLine.allLine.noBorder .inputCol{
+    border: 0;
+    height: 40px!important;
+}
+.container .inputCol label{
+    display: block;
+    padding: .4rem 1rem;
+    border-radius: 2rem 2rem 1rem 0rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: .2rem;
+}
+.container .inputCol input,.container .inputCol select{
+    padding: .4rem 1rem;
+    font-size: 1rem;
+    border: 0;
+    border-bottom: 3px solid black;
+    outline: none;
+    width: 410px;
+    background-color: #fff;
+    border-radius:  0 0 1rem 0;
+    font-weight: normal;
+}
+.container .inputCol.min, .container .inputCol.min input{
+    width: 300px;
+    margin-right: 9rem;
+}
+.container .inputLine.allLine .inputCol input, .container .inputLine.allLine .inputCol button{
+    width: 600px;
+    margin: auto;
+}
+.container .inputLine.allLine .inputCol button{
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    opacity: .8;
+    background-color: rgb(51, 51, 250);
+    color: white;
+    text-shadow: .1rem .1rem .3rem black;
+    padding: .2rem 0;
+    border-radius: 0 0 1rem 1rem;
+}
+.container .inputLine.allLine .inputCol button#cancel{
+    background-color: rgb(241, 32, 32);
+}
+.container .inputLine.allLine .inputCol button:hover{
+    opacity: 1;
+    background-color: blue;
+}
+.container .inputLine.allLine .inputCol button#cancel:hover{
+    background-color: rgb(255, 0, 0);
+}
+/* Pos Form */
