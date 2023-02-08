@@ -15,13 +15,14 @@
             <a href="#">
                 <li>Empregados<i class="fa-solid fa-users"></i></li>
             </a>
-            <a href="/auth/cadastrar/empregado">
-                <li>Cadastrar Empregado<i class="fa-solid fa-user-plus"></i></li>
-            </a>
-            <a href="#">
-                <li>Editar Empregado<i class="fa-solid fa-user-pen"></i></li>
-            </a>
-            
+            <?php if(isset($_SESSION['cod']) && !empty($_SESSION['cod'])){ ?>
+                <a href="/auth/cadastrar/empregado">
+                    <li>Cadastrar Empregado<i class="fa-solid fa-user-plus"></i></li>
+                </a>
+                <a href="#">
+                    <li>Editar Empregado<i class="fa-solid fa-user-pen"></i></li>
+                </a>
+            <?php }?>
         <?php } ?>
     </ul>
     <a href="/logout">

@@ -1,3 +1,12 @@
+<?php
+
+use MF\Model\Container;
+
+    $cargo = Container::getModel('cargo');
+    $cargos = $cargo->getAllSession();
+
+?>
+
 <main id="cadastroContainer">
     <div class="container" >
         <h2>Cadastro de Empregados</h2>
@@ -51,11 +60,11 @@
                     <label for="perm">Permissão</label>
                     <select name="perm" id="perm" required>
                         <option value="">-- Selecione uma Opção --</option>
-                        <option value="1">A</option>
-                        <option value="2">B</option>
-                        <option value="3">C</option>
-                        <option value="4">D</option>
-                        <option value="5">E</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
                 </div>
             </div>
@@ -64,20 +73,22 @@
             <div class="inputLine">
                 <div class="inputCol">
                     <label for="sessao">Sessão</label>
-                    <select name="sessao" id="sessao" required>
+                    <select name="sessao" id="sessao" onchange="defineCargo(this)" required>
                         <option value="">-- Selecione uma Opção --</option>
-                        <option value="1">A1</option>
-                        <option value="2">B1</option>
-                        <option value="3">C1</option>
-                        <option value="4">D1</option>
-                        <option value="5">E1</option>
+                        <?php 
+                            if($cargos){
+                                foreach ($cargos as $key => $cargo) {?>
+                                    <option value="<?php echo $cargo['sessão'] ?>"><?php echo $cargo['sessão'] ?></option>
+                                <?php }
+                            }
+
+                        ?>
                     </select>
                 </div>
                 <div class="inputCol">
                     <label for="cargo">Cargo</label>
                     <select name="cargo" id="cargo" required>
                         <option value="">-- Selecione uma Sessão --</option>
-                        <option value="1">Estágiario</option>
                     </select>
                 </div>
             </div>
@@ -86,7 +97,7 @@
             <div class="inputLine allLine">
                 <div class="inputCol">
                     <label for="sessao">Código do Empregador</label>
-                    <input type="text" name="cod" id="cod" value="####" required readonly style="background-color: black;color: white!important;">
+                    <input type="text" name="cod" id="cod" value="<?php echo $_SESSION['cod']?>" required readonly style="background-color: black;color: white!important; font-size: 1.4rem; letter-spacing: .2rem; text-transform: uppercase; font-weight: bold;">
                 </div>
             </div>
             <!-- LINE 7 -->
@@ -103,7 +114,8 @@
                     <button type="reset" id="cancel">Cancelar</button>
                 </div>
             </div>
-            
         </form>
     </div>
 </main>
+
+
