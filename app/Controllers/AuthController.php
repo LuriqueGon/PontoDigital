@@ -26,6 +26,8 @@
                 unset($_SESSION['email']);
                 unset($_SESSION['permissao']);
                 unset($_SESSION['empregador']);
+                unset($_SESSION['cod']);
+                unset($_SESSION['pin']);
                 $msg = Container::getModel('Message');
                 $msg->setMessage('Logout realizado com sucesso','success','/access');
 

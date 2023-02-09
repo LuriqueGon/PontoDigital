@@ -13,6 +13,14 @@
             return $stmt;
         }
 
+        public function rawQuery(String $rawQuery, Array $params = array()){
+            $stmt = $this->db->prepare($rawQuery);
+            $this->setParams($stmt, $params);
+            return $stmt->execute();
+        }
+
+        
+
         private function setParams($stmt, Array $params = array()):void{
             foreach($params as $key => $value){
                 $this->setParam($stmt, $key+1, $value);

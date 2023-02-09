@@ -90,11 +90,11 @@
 
         // }
 
-        public function PontoEntradaBatido(){
-            $query = "SELECT * FROM `registrodeponto` WHERE colaborador_id = ? AND data LIKE ? AND hora_saida = NULL";
+        public function PontoEntradaBatido():bool{
+            $query = "SELECT * FROM `registrodeponto` WHERE colaborador_id = ? AND data LIKE ? AND pontoBatido = 0";
             $value = $this->select($query, array($this->__get('id'),$this->__get('data')."%"));
 
-            if(!$value){
+            if($value){
                 return true;
             }else{
                 return false;

@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `pontodigital`.`empregador` (
   `contato` VARCHAR(120) NOT NULL,
   `codigo_empregador` VARCHAR(45) NOT NULL,
   `data_registro` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `perfil` VARCHAR(45) NOT NULL,
+  `perfil` VARCHAR(400) NOT NULL,
   `empregados` INT NULL DEFAULT 0,
   `permissao` TINYINT NOT NULL DEFAULT 1,
   `ativo` TINYINT NOT NULL DEFAULT 1,
@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `pontodigital`.`empregado` (
   PRIMARY KEY (`id`),
   INDEX `fk_colaborador_empregador1_idx` (`empregador_id` ASC) VISIBLE,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
+  UNIQUE INDEX `pin_UNIQUE` (`pin` ASC) VISIBLE,
   CONSTRAINT `fk_colaborador_empregador1`
     FOREIGN KEY (`empregador_id`)
     REFERENCES `pontodigital`.`empregador` (`id`)

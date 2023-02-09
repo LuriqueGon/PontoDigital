@@ -22,6 +22,20 @@
                 }
             }
         }
+
+        public static function setInstaMessage($message, $type, $redirect = "/", $time = 1){
+            if(isset($message) && !empty($message)){
+                $_SESSION['type'] = $type;
+                $_SESSION['msg'] = $message;
+                $_SESSION['time'] = $time;
+
+                if($redirect == "back"){
+                    header('location: '. $_SERVER['HTTP_REFERER']);
+                }else{
+                    header('location: '. $redirect);
+                }
+            }
+        }
         
         public function getMessage(){
             if(!empty($_SESSION['msg'])){
