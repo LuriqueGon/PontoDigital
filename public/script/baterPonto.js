@@ -1,4 +1,4 @@
-const baterPonto = (pin) => {
+const baterPonto = pin => {
 
     if(!document.querySelector('.pontoBatido')){
         if(confirm("Dejesa bater o ponto?")){

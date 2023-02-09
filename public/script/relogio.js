@@ -9,11 +9,15 @@ const relogio = setInterval(() => {
     minute = minute >= 10 ? minute : '0' + minute
     second = second >= 10 ? second : '0' + second
 
-    $('#hour').text(hour)
-    $('#minute').text(minute)
-    $('#second').text(second)
+    setTime(hour, minute, second)
 
     if(document.querySelector('.pontoOff')){
         $('.pontoOff').removeClass('pontoOff')
     }
-}, 1000)
+}, 999)
+
+const setTime = (hour, minute, second) => {
+    $('#hour').text(hour)
+    $('#minute').text(minute)
+    $('#second').text(second)
+}

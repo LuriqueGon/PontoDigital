@@ -1,4 +1,4 @@
-const defineCargo = (select) => {
+const defineCargo = select => {
     $('#cargo').html('');
 
     $.ajax({
