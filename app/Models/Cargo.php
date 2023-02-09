@@ -9,6 +9,10 @@ use MF\Model\DAO;
             return $this->selectAll('SELECT sessão FROM `cargo` GROUP BY sessão');
         }
 
+        public function getSession():array{
+            return $this->select('SELECT sessão FROM `cargo` WHERE sessão = ?', [$this->__get('session')]);
+        }
+
         public function getAllCargos(String $session):array{
             return $this->selectAll('SELECT nome_cargo, id FROM `cargo` WHERE sessão = ?', [$session]);
         }

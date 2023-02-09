@@ -28,5 +28,5 @@ $(document).ready(function() {
 
 const reset = () => {
   console.log(1)
-  document.querySelector("#preview").setAttribute('src', '/img/noPerfil.png')
+  document.querySelector("#preview").setAttribute('src', '/img/perfil/noPerfil.png')
 }

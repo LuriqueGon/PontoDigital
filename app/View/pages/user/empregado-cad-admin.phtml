@@ -3,10 +3,8 @@
 use MF\Model\Container;
 
     $cargo = Container::getModel('cargo');
-    $cargo->__set('session', $_SESSION['sessão']);
-    $cargos = $cargo->getSession();
+    $cargos = $cargo->getAllSession();
 
-    $cargosSession = $cargo->getAllCargos($cargos['sessão']);
 ?>
 
 <main id="cadastroContainer">
@@ -64,7 +62,6 @@ use MF\Model\Container;
                         <option value="">-- Selecione uma Opção --</option>
                         <?php for($i = 1; $i<=$_SESSION['permissao']; $i++){ ?>
                             <option value="<?php echo $i ?>"><?php echo $i ?></option>
-
                         <?php }?>
                     </select>
                 </div>
@@ -75,10 +72,13 @@ use MF\Model\Container;
                 <div class="inputCol">
                     <label for="sessao">Sessão</label>
                     <select name="sessao" id="sessao" onchange="defineCargo(this)" required>
+                        <option value="">-- Selecione uma Opção --</option>
                         <?php 
-                            if($cargos){?>
-                                    <option value="<?php echo $cargos['sessão'] ?>"><?php echo $cargos['sessão'] ?></option>
-                            <?php }
+                            if($cargos){
+                                foreach ($cargos as $key => $cargo) {?>
+                                    <option value="<?php echo $cargo['sessão'] ?>"><?php echo $cargo['sessão'] ?></option>
+                                <?php }
+                            }
 
                         ?>
                     </select>
@@ -86,16 +86,7 @@ use MF\Model\Container;
                 <div class="inputCol">
                     <label for="cargo">Cargo</label>
                     <select name="cargo" id="cargo" required>
-                        <option value="">-- Selecione um Cargo --</option>
-                        <?php
-                        
-                            if($cargosSession){
-                                foreach ($cargosSession as $key => $cargo) {?>
-                                    <option value="<?php echo $cargo['id'] ?>"><?php echo $cargo['nome_cargo'] ?></option>
-                                <?php }
-                            }
-                        
-                        ?>
+                        <option value="">-- Selecione uma Sessão --</option>
                     </select>
                 </div>
             </div>

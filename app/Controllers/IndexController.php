@@ -8,12 +8,13 @@
 
         public function index(){
             $this->restrict();
-
+            
             if($_SESSION['permissao'] >= 3){
                 $this->render('indexAdmin', 'adminLay');
             }else{
                 $this->render('index', 'adminLay');
             }
+            
             
         }
 

@@ -10,7 +10,11 @@
         public function index(){
             $this->restrict();
             if(isset($_SESSION['cod']) && !empty($_SESSION['cod'])){
-                $this->render('empregado-cad', 'userLay');
+                if($_SESSION['permissao'] >= 5){
+                    $this->render('empregado-cad-admin', 'userLay');
+                }else{
+                    $this->render('empregado-cad', 'userLay');
+                }
             }else{
                 $msg = Container::getModel('message');
                 $msg->setMessage('Você não pode acessar essa página', 'danger', '/');

@@ -72,7 +72,7 @@ use MF\Model\Container;
         }
 
         private function haveAccount(){
-            $query = "SELECT empregador.codigo_empregador, empregador.nome as tipo, empregador.contato, empregado.id, empregado.pin, empregado.nome, empregado.email, empregado.perfil, empregado.permissao FROM `empregado` LEFT JOIN empregador ON empregador.id = empregado.empregador_id WHERE pin = ? AND codigo_empregador = ?";
+            $query = "SELECT empregador.codigo_empregador, empregador.nome as tipo, empregador.contato, empregador.sessão, empregado.id, empregado.pin, empregado.nome, empregado.email, empregado.perfil, empregado.permissao FROM `empregado` LEFT JOIN empregador ON empregador.id = empregado.empregador_id WHERE pin = ? AND codigo_empregador = ?";
             return $this->select($query, array($this->__get('pin'),$this->__get('cod')));
         }
 
