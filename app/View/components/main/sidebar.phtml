@@ -1,4 +1,17 @@
 <nav class="sidebar">
+    <div class="profile">
+        <?php
+
+            $url = empty($_SESSION['perfil']) ? "noPerfil.png" : $_SESSION['perfil'];
+            
+        ?>
+        <img src="/img/perfil/<?php echo $url ?>">
+        <?php
+            $nome = explode(' ',$_SESSION['nome']);
+        
+        ?>
+        <h2><?php echo $nome[0] ?></h2>
+    </div>
     <ul>
         <!-- PONTOS -->
         <a href="/">

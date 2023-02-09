@@ -34,6 +34,7 @@
 
             // Set dados no objeto
             $empregado = Container::getModel('empregado');
+
             $empregado->__set('nome', $_POST['nome']);
             $empregado->__set('email', $_POST['email']);
             $empregado->__set('senha', $_POST['senha']);
@@ -57,6 +58,10 @@
 
             // Pegar foto de perfil
 
+            echo "<pre>";
+            var_dump($_POST);
+            echo "</pre>";
+
             if(!empty($file)){
                 $file['type'] = explode('/',$file['type'])[1];
                 if(in_array($file['type'], ["jpeg","jpg","JPEG","JPG", "png", "PNG"])){
@@ -64,10 +69,10 @@
                     if($file['error'])Message::setInstaMessage($file['error'], 'danger', 'back');
                     if(!is_dir($path))mkdir($path);
                     if(!is_dir($path.'/'.$userName ))mkdir($path.'/'. $userName);
-
                     // Salva foto no servidor, e envia pro Objeto EMPREGADO
                     $empregado->__set('perfil', "$userName/".$fileName);
                     if($empregado->cadastrarEmpregado()){
+                        $empregado->cadastrarCargo();
                         if(move_uploaded_file($file['tmp_name'], $perfil)){
                             Message::setInstaMessage("Cadastro realizado com sucesso", 'success', 'back');
                         }else Message::setInstaMessage("Uploud do arquivo falhou", 'danger', 'back');

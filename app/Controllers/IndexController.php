@@ -12,8 +12,9 @@
             if($_SESSION['permissao'] >= 3){
                 $this->render('indexAdmin', 'adminLay');
             }else{
-                $this->render('index');
+                $this->render('index', 'adminLay');
             }
+            
         }
 
 

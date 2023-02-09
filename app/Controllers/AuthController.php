@@ -86,7 +86,7 @@
                 $_SESSION['permissao'] = $user['permissao'];
                 $_SESSION['status'] = "Empregador";
                 $_SESSION['cod'] = $user['codigo_empregador'];
-
+                $_SESSION['pin'] = $user['pin'];
 
                 $msg = Container::getModel('Message');
                 $msg->setMessage('Acesso autorizado para o empregador','success','/');

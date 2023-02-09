@@ -16,3 +16,8 @@
 .pontoOff{
     display: none;
 }
+.content{
+    width: 82%!important;
+    position: relative!important;
+    left: 18%!important;
+}

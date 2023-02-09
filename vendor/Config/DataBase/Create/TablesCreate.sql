@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `pontodigital`.`empregado` (
   `pin` VARCHAR(8) NOT NULL,
   `nascimento` TIMESTAMP NOT NULL,
   `telefone` VARCHAR(45) NOT NULL,
-  `perfil` VARCHAR(45) NOT NULL,
+  `perfil` VARCHAR(400) NOT NULL,
   `permissao` TINYINT NULL DEFAULT 1,
   `ativo` TINYINT NULL DEFAULT 1,
   `data_registro` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,

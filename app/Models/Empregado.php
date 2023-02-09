@@ -58,11 +58,48 @@ use MF\Model\Container;
             
         }
 
+        public function cadastrarCargo(){
+            $id = $this->getIdEmpregado()['id'];
+            var_dump($id);
+            if(!$this->haveCargoWithId($id)){
+                $query = "INSERT INTO cargo_empregado (id_cargo, colaborador_id) VALUES (?,?)";
+                $params = array(
+                    $this->__get('cargo'),
+                    $id
+                );
+                $this->query($query, $params);
+            }
+        }
+
         private function haveAccount(){
             $query = "SELECT empregador.codigo_empregador, empregador.nome as tipo, empregador.contato, empregado.id, empregado.pin, empregado.nome, empregado.email, empregado.perfil, empregado.permissao FROM `empregado` LEFT JOIN empregador ON empregador.id = empregado.empregador_id WHERE pin = ? AND codigo_empregador = ?";
             return $this->select($query, array($this->__get('pin'),$this->__get('cod')));
         }
 
+        private function getIdEmpregado():array{
+            $query = "SELECT id FROM empregado WHERE email = ? AND senha = ? AND pin = ?";
+            $params = array(
+                $this->__get('email'),
+                $this->__get('senha'),
+                $this->__get('pin')
+
+            );
+            return $this->select($query, $params);
+            
+        }
+
+        private function haveCargoWithId(Int $id):bool{
+            $query = "SELECT * FROM cargo_empregado WHERE id_cargo = ? AND colaborador_id = ? AND ativo = 1";
+            $params = array(
+                $this->__get('cargo'),
+                $id
+            );
+            if($this->select($query, $params)){
+                return true;
+            }else{
+                return false;
+            }
+        }
         
 
         public function __set($attr, $value){
