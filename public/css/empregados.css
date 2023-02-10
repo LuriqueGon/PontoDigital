@@ -1,0 +1,69 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    outline: none;
+}
+
+header h2{
+    font-family: arial;
+    padding: 1rem;
+    background-image: linear-gradient(to bottom, rgb(23, 252, 23), rgb(23, 109, 23));
+    color: white;
+    letter-spacing: .1rem;
+    font-size: 1.6rem;
+    text-align: center;
+    position: relative;
+}
+header h2 i{
+    margin: 0 2rem;
+    font-size: 2.4rem;
+}
+
+header h2 i#close{
+    color: rgb(192, 2, 2);
+    opacity: .7;
+    cursor: pointer;
+    position: absolute;
+    left: 2%;
+}
+header h2 i#close:hover{
+    opacity: 1;
+    color: rgb(248, 27, 27);
+}
+
+.functions{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    margin: 2rem 0;
+}
+.functions li{
+    width: 100%;
+    text-align: center;
+    padding: 1rem .4rem;
+    background: #cdcdcd;
+    margin: 0 2rem;
+    box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.548);
+    border-bottom: 8px solid #aaa;
+    border-radius: 2rem;
+    font-family: fantasy;
+    letter-spacing: .1rem;
+}
+.functions li:hover{
+    background-color: #aaa;
+    border-color: #666;
+    cursor: pointer;
+}
+.functions li i{
+    margin-right:1rem;
+    font-size: 1.4rem;
+}
+main .containerContent{
+    display: flex;
+}
+main .containerContent .content{
+    width: 100%;
+    margin: 1.4rem;
+}

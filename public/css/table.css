@@ -1,0 +1,79 @@
+#table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+#table tbody tr {
+    height: 30px;
+    cursor: pointer;
+}
+#table thead {
+    background: beige;
+}
+#table thead tr th{
+    font-size: .8rem;
+    font-weight: bold;
+    border: 2px solid;
+}
+#table thead tr th.thMain{
+    padding: 0 .4rem;
+    text-align: center;
+    color: green;
+    border: 0;
+    padding-bottom: 2rem;
+    cursor: pointer;
+    font-weight: lighter;
+    opacity: .7;
+}
+#table thead tr th.thMain i{
+    display: none;
+}
+#table thead tr th.thMain i.ordering{
+   display: inline;
+   margin-left: .4rem;
+   font-size: 1rem;
+}
+#table th.thInputField{
+    position: relative;
+}
+#table th.thInputField input{
+    color: navy;
+}
+#table input.inputField{
+    width: 88%;
+    border: 0;
+    border-bottom: 3px solid greenyellow;
+    padding: 0.4rem;
+    margin: 0.4rem 0.3rem;
+}
+#table th.thInputField i{
+    position: absolute;
+    top: 5px;
+    right: 7px;
+    font-size: 1.5rem;
+    cursor: zoom-in;
+    color:green;
+}
+#table tbody tr td{ 
+    padding: 1rem 0;
+    color: #505050;
+    font-size: .8rem;
+}
+#table tbody tr td{
+    text-align: center;
+}
+#table tbody tr td.nome{
+    text-align: start;
+    padding-left: .8rem;
+}
+#table tbody tr td.cargo{
+    color: green;
+}
+#table tbody tr td.session{
+    color: black;
+}
+
+.id{
+    width: 5rem!important;
+    text-align: center;
+}

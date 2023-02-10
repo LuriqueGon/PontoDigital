@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<?php $this->loadComponent('metaTag'); ?>
+	<?php $this->loadComponent('CDNs'); ?>
+	<?php $this->loadComponent('favico'); ?>
+	
+	<link rel="stylesheet" href="/css/filter.css">
+	<link rel="stylesheet" href="/css/table.css">
+	<link rel="stylesheet" href="/css/empregados.css">
+
+	<script src="/script/filter.js" defer></script>
+	<script src="/script/search.js" defer></script>
+	<script src="/script/ordering.js" defer></script>
+
+	
+	<title>Ponto Digital | Todos Empregados |</title>
+</head>
+
+<body>
+
+	<?php $this->loadComponent('toast')?>
+    <?php $this->content() ?>
+	
+
+</body>
+</html>

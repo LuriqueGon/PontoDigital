@@ -1,0 +1,34 @@
+#filters {
+    width: 300px;
+    padding: 2rem;
+    background-color: #ccc;
+    min-height: 100vh;
+}
+
+.filter-group {
+    margin-top: 20px;
+}
+
+.filter-item {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+body {
+    font-family: Verdana;
+}

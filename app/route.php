@@ -88,6 +88,11 @@ use MF\Init\Bootstrap;
                 'controller' => 'UserController',
                 'action' => 'cadastrarEmpregado'
             );  
+            $routes['allEmpregados'] = array(
+                'route' => '/visualizar/empregados',
+                'controller' => 'UserController',
+                'action' => 'visualizarEmpregados'
+            );  
             
 
             // TESTE

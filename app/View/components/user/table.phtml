@@ -1,0 +1,90 @@
+<?php
+
+    use MF\Model\Container;
+
+    $empregado = Container::getModel('empregado');
+    $empregados = $empregado->getAll();
+?>
+
+<table id="table">
+    <thead>
+        <tr>
+            <th class="thMain">
+                <span>Mark</span>
+            </th>
+            <th class="thMain id" onclick="sortTable(0, this)">
+                <span>Id</span>
+                <i class="fa-solid fa-sort-down"></i>
+                <i class="fa-solid fa-sort-up"></i>
+            </th>
+            <th class="thMain" onclick="sortTable(1, this)">
+                <span>Nome</span>
+                <i class="fa-solid fa-sort-down"></i>
+                <i class="fa-solid fa-sort-up"></i>
+            </th>
+            <th class="thMain" onclick="sortTable(2, this)">
+                <span>Sessão</span>
+                <i class="fa-solid fa-sort-down"></i>
+                <i class="fa-solid fa-sort-up"></i>
+            </th>
+            <th class="thMain" onclick="sortTable(3, this)">
+                <span>Cargo</span>
+                <i class="fa-solid fa-sort-down"></i>
+                <i class="fa-solid fa-sort-up"></i>
+            </th>
+            <th class="thMain" onclick="sortTable(4, this)">
+                <span>Registro</span>
+                <i class="fa-solid fa-sort-down"></i>
+                <i class="fa-solid fa-sort-up"></i>
+            </th>
+            <th class="thMain" onclick="sortTable(5, this)">
+                <span>Pontos Registrados</span>
+                <i class="fa-solid fa-sort-down"></i>
+                <i class="fa-solid fa-sort-up"></i>
+            </th>
+        </tr>
+        <tr>
+            <th class="thInputField">
+                <input type="checkbox" style="margin: .1rem 0 .1rem 1rem;" value="">
+            </th>
+            <th class="thInputField id">
+                <input type="text" class="inputField id" id="txtColuna1" />
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </th>
+            <th class="thInputField">
+                <input type="text" class="inputField" id="txtColuna2" />
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </th>
+            <th class="thInputField">
+                <input type="text" class="inputField" id="txtColuna3" />
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </th>
+            <th class="thInputField">
+                <input type="text" class="inputField" id="txtColuna4" />
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </th>
+            <th class="thInputField">
+                <input type="text" class="inputField" id="txtColuna5" />
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </th>
+            <th class="thInputField">
+                <input type="text" class="inputField" id="txtColuna6" />
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($empregados as $key => $emp) { ?>
+            <tr>
+                <td><input type="checkbox" class="tdCheckbox" value="<?php echo $emp['id'] ?>" style="margin: .1rem 0 .1rem 1rem;"></td>
+                <td class="id"><?php echo $key + 1 ?></td>
+                <td class="nome"><?php echo $emp['nome'] ?></td>
+                <td class="session"><?php echo $emp['sessão'] ?></td>
+                <td class="cargo"><?php echo $emp['nome_cargo'] ?></td>
+                <td><?php echo $emp['data_registro'] ?></td>
+                <td><?php echo $emp['pontos_registrados'] ?></td>
+            </tr>
+        <?php } ?>
+
+    </tbody>
+</table>

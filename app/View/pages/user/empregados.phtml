@@ -1,0 +1,19 @@
+
+
+<header>
+    <h2><i class="fa-solid fa-users"></i>Gerenciador de Empregado: Empregados <a href="/"><i class="fa-solid fa-delete-left" id="close"></i></a></h2>
+
+</header>
+
+<main>
+    <div class="containerContent">
+        <?php $this->loadComponent('filter') ?>
+        
+        <div class="content">
+            <?php $this->loadComponent('functionsMenu') ?>
+
+            <?php $this->loadComponent('table') ?>
+        </div>
+
+    </div>
+</main>

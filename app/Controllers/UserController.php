@@ -21,6 +21,12 @@
             }
         }
 
+        public function visualizarEmpregados(){
+            $this->restrict();
+
+            $this->render('empregados', 'empregadosLay');
+        }
+
         public function getCargos(){
             $this->restrict();
 

@@ -20,7 +20,7 @@ use MF\Model\Container;
         public $cod;
         public $empregador_id;
 
-        public function autentication(){
+        public function autentication():array{
             if(!$this->haveAccount()){
                 $msg = Container::getModel('Message');
                 $msg->setMessage('Dados Inexistentes e/ou incoerentes','danger','back');
@@ -31,7 +31,7 @@ use MF\Model\Container;
 
         }
 
-        public function cadastrarEmpregado(){
+        public function cadastrarEmpregado():bool{
             $query = "INSERT INTO `empregado`(`nome`, `email`, `senha`, `pin`, `nascimento`, `telefone`, `perfil`, `permissao`, `empregador_id`) VALUES (?,?,?,?,?,?,?,?,?)";
             $params = array(
                 $this->__get('nome'),
@@ -58,7 +58,7 @@ use MF\Model\Container;
             
         }
 
-        public function cadastrarCargo(){
+        public function cadastrarCargo():void{
             $id = $this->getIdEmpregado()['id'];
             var_dump($id);
             if(!$this->haveCargoWithId($id)){
@@ -71,7 +71,12 @@ use MF\Model\Container;
             }
         }
 
-        private function haveAccount(){
+        public function getAll():array{
+            $query = "SELECT e.id, e.nome, e.pontos_registrados, e.data_registro, ce.id_cargo, c.`sessão`, c.nome_cargo FROM (empregado as e LEFT JOIN cargo_empregado as ce ON e.id = ce.colaborador_id) leFT JOIN cargo as c ON ce.id_cargo = c.id WHERE e.ativo = 1";
+            return $this->selectAll($query);
+        }
+
+        private function haveAccount() :array{
             $query = "SELECT empregador.codigo_empregador, empregador.nome as tipo, empregador.contato, empregador.sessão, empregado.id, empregado.pin, empregado.nome, empregado.email, empregado.perfil, empregado.permissao FROM `empregado` LEFT JOIN empregador ON empregador.id = empregado.empregador_id WHERE pin = ? AND codigo_empregador = ?";
             return $this->select($query, array($this->__get('pin'),$this->__get('cod')));
         }
