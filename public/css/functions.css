@@ -1,0 +1,31 @@
+.functions{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    margin: 2rem 0;
+}
+.functions li{
+    width: 100%;
+    text-align: center;
+    padding: 1rem .4rem;
+    background: #cdcdcd;
+    margin: 0 2rem;
+    box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.548);
+    border-bottom: 8px solid #aaa;
+    border-radius: 2rem;
+    font-family: fantasy;
+    letter-spacing: .1rem;
+}
+.functions.openMenu li{
+    margin: 0 1rem;
+}
+.functions li:hover{
+    background-color: #aaa;
+    border-color: #666;
+    cursor: pointer;
+}
+.functions li i{
+    margin-right:1rem;
+    font-size: 1.4rem;
+}

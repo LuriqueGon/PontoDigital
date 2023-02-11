@@ -9,3 +9,4 @@ applyFiltersButton.addEventListener('click', e => {
     });
     console.log('Selected filters:', selectedFilters);
 });
+

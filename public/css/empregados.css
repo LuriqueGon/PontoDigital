@@ -32,33 +32,49 @@ header h2 i#close:hover{
     color: rgb(248, 27, 27);
 }
 
-.functions{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
-    margin: 2rem 0;
-}
-.functions li{
-    width: 100%;
-    text-align: center;
-    padding: 1rem .4rem;
-    background: #cdcdcd;
-    margin: 0 2rem;
-    box-shadow: 0.2rem 0.4rem 1rem rgba(0, 0, 0, 0.548);
-    border-bottom: 8px solid #aaa;
-    border-radius: 2rem;
-    font-family: fantasy;
-    letter-spacing: .1rem;
-}
-.functions li:hover{
-    background-color: #aaa;
-    border-color: #666;
+.hamb{
+    position: fixed;
+    top: 1.5rem;
+    left: 10rem;
     cursor: pointer;
+    transition: all .8s;
+    z-index: 10;
+    display: block;
 }
-.functions li i{
-    margin-right:1rem;
-    font-size: 1.4rem;
+.hamb.open{
+    top: 6rem;
+    left: 13.5rem;
+}
+.hamb.close{
+    display: none;
+}
+.hamb div{
+    width: 1.5rem;
+    height: .15rem;
+    margin: .2rem 0;
+    background-color: #fff;
+    box-shadow: 0 0 .2rem black;
+}
+.hamb.open div{
+    background-color: #000;
+}
+.hamb.open:hover div{
+    background-color: red;
+    box-shadow: 0;
+}
+.hamb.open div:nth-child(1) {
+    transform: rotate(45deg) translate(1px, 7px);
+}
+.hamb.open div:nth-child(2) {
+    opacity: 0;
+}
+
+.hamb.open div:nth-child(3) {
+    transform: rotate(-45deg) translate(1px, -7px);
+}
+main{
+    position: relative;
+    top: -8px;
 }
 main .containerContent{
     display: flex;
