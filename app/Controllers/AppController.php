@@ -2,6 +2,7 @@
 
     namespace App\Controllers;
 
+    use App\Models\Message;
     use MF\Controller\Action;
     use MF\Model\Container;
 
@@ -30,22 +31,10 @@
                 $ponto->__set('hora_entrada', $hora);
 
                 if($ponto->registrarPontoEntrada()){
-                    $msg = Container::getModel('message');
-                    $msg->setMessage('Ponto Registrado ás '.$hora, 'success', '/registrarPonto');
-                    exit;
-                    
-                }else{
-                    $msg = Container::getModel('message');
-                    $msg->setMessage('Houve algum erro, data não definida pelo processo', 'danger', 'back');
-                    exit;
-                }
+                    Message::setInstaMessage('Ponto Registrado ás '.$hora, 'success', '/registrarPonto');
+                }else Message::setInstaMessage('Houve algum erro, data não definida pelo processo', 'danger', 'back');
 
-            }else{
-                $msg = Container::getModel('message');
-                $msg->setMessage('Houve algum erro, data não definida pelo processo', 'danger', 'back');
-                exit;
-
-            }
+            }else Message::setInstaMessage('Houve algum erro, data não definida pelo processo', 'danger', 'back');
         }
 
         public function registrarpontoSaida(){
@@ -57,7 +46,7 @@
                 $data = explode(' ', $data);
                 $hora = $data[1];
                 $data = $data[0];
-
+                
                 $ponto = Container::getModel('ponto');
 
                 $ponto->__set('id', $_SESSION['user_id']);
@@ -65,23 +54,11 @@
                 $ponto->__set('hora_saida', $hora);
 
                 if($ponto->registrarPontoSaida()){
-                    $msg = Container::getModel('message');
-                    $msg->setMessage('Saida registrada ás '.$hora, 'success', '/registrarPonto');
-                    exit;
+                    Message::setInstaMessage('Saida registrada ás '.$hora, 'success', '/registrarPonto');
 
-                }else{
-                    $msg = Container::getModel('message');
-                    $msg->setMessage('Houve algum erro, data não definida pelo processo', 'danger', 'back');
-                    exit;
+                }else Message::setInstaMessage('Houve algum erro, data não definida pelo processo', 'danger', 'back');
 
-                }
-
-            }else{
-                $msg = Container::getModel('message');
-                $msg->setMessage('Houve algum erro, data não definida pelo processo', 'danger', 'back');
-                exit;
-
-            }
+            }else Message::setInstaMessage('Houve algum erro, data não definida pelo processo', 'danger', 'back');
         }
     }
 

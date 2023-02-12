@@ -29,8 +29,8 @@
         }
 
         private function IsPontoEntrada():bool{
-            $query = "SELECT * FROM `registrodeponto` WHERE colaborador_id = ? AND data LIKE ? AND pontoBatido = 0";
-            $value = $this->select($query,array($this->__get('id'),$this->__get('data')."%"));
+            $query = "SELECT * FROM `registrodeponto` WHERE colaborador_id = ? AND pontoBatido = 0 ORDER BY `data` DESC LIMIT 1";
+            $value = $this->select($query,array($this->__get('id')));
 
             if(!$value){
                 return true;
@@ -62,23 +62,28 @@
         }
 
         private function getHoraEntrada():string{
-            $query = "SELECT hora_entrada FROM `registrodeponto` WHERE colaborador_id = ? AND `data` AND pontoBatido = 0 LIKE ? ORDER BY hora_entrada DESC";
-            $stmt = $this->db->prepare($query);
-            $stmt->bindValue(1, $this->__get('id'));
-            $stmt->bindValue(2, $this->__get('data')."%");
-            $stmt->execute();
+            $query = "SELECT hora_entrada FROM `registrodeponto` WHERE colaborador_id = ? AND pontoBatido = 0 ORDER BY `data` DESC";
+            return $this->select($query, [$this->__get('id')])['hora_entrada'];
+        }
 
-            return $stmt->fetch(\PDO::FETCH_ASSOC)['hora_entrada'];
+        private function getIdPonto():int{
+            $query = "SELECT id FROM `registrodeponto` WHERE colaborador_id = ? AND pontoBatido = 0 ORDER BY `data` DESC";
+            return $this->select($query, [$this->__get('id')])['id'];
         }
 
         private function registrarSaida(){
-            $query = "UPDATE `registrodeponto` SET `hora_saida`=? , `totalHorasTrabalhadas`= ? WHERE `colaborador_id`= ? AND hora_entrada = ?";
-            $this->query($query, array($this->__get('hora_saida'),$this->__get('horasTotais'),$this->__get('id'),$this->__get('hora_entrada')));
+            $query = "UPDATE `registrodeponto` SET `hora_saida`= ? , `totalHorasTrabalhadas`= ? WHERE id = ?";
+
+            $params = array(
+                $this->__get('hora_saida'),
+                $this->__get('horasTotais'),
+                $this->getIdPonto()
+            );
+            $this->query($query, $params);
         }
 
         private function finalizarPonto(){
-            $query = "UPDATE registroDePonto SET pontoBatido = 1 WHERE colaborador_id = ? AND hora_entrada = ?";
-            $this->query($query, array($this->__get('id'),$this->__get('hora_entrada')));
+            $this->query("UPDATE registroDePonto SET pontoBatido = 1 WHERE id = ?", array($this->getIdPonto()));
         }
 
         private function registrarPontoEmpregado(){
