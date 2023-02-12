@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    outline: 0;
+    padding: 0;
+}
+.content{
+    padding-left: 16rem;
+}
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
+}
+header h2{
+    text-align: center;
+    background: green;
+    color: white;
+    letter-spacing: .1rem;
+    font-family: arial;
+    padding: 0.5rem 0;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+aside .inputLine{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}
+aside .inputLine.date{
+    justify-content: start;
+}
+aside .inputLine .inputCol{
+    margin: 1rem;
+}
+aside .inputLine.inputRead .inputCol{
+    width: 100%;
+    border-right: 2px solid;
+    padding: .5rem;
+}
+aside .inputLine.inputRead .inputCol:last-child{
+    border-right: 0;
+}
+aside .inputLine.date .inputCol{
+    width: 12%;
+    margin: 0 2rem;
+}
+aside .inputLine .inputCol label{
+    display: block;
+}
+aside .inputLine.inputRead .inputCol label{
+    text-transform: uppercase;
+    color: blue;
+    font-weight: bolder;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    text-indent: 3rem;
+}
+aside .inputLine.date .inputCol label{
+    text-align: center;
+    font-size: .8rem;
+    letter-spacing: .2rem;
+    color: rgb(150, 236, 20);
+    text-transform: uppercase;
+    font-weight: bolder;
+    width: 5rem;
+}
+aside .inputLine .inputCol input{
+    width: 80%;
+    padding: .4rem 1.5rem;
+    letter-spacing: .1rem;
+}
+aside .inputLine.inputRead .inputCol input{
+    border: 0;
+    border-bottom: 3px solid green!important;
+    font-size: 1.5rem;
+    color: black;
+    letter-spacing: .2rem;
+    text-align: center;
+}
+aside .inputLine.date .inputCol input{
+    width: 7rem!important;
+    font-size: .8rem;
+    height: 1.9rem;
+}
+aside .inputLine.date .inputCol select{
+    font-size: .6rem!important;
+}
+aside .inputLine.date .inputCol select, aside .inputLine.date .inputCol input{
+    border: 2px solid;
+}
+aside .inputLine.date .inputCol select option, aside .inputLine.date .inputCol select{
+    width: 100%;
+    font-size: .8rem;
+    text-align: center;
+    padding: .3rem;
+}
+main{
+    border: 2px solid;
+    margin: 2rem;
+}
+table {
+    width: 90%;
+    border-collapse: collapse;
+    text-align: left;
+    border-collapse: collapse;
+    margin: 2rem auto;
+}
+table tbody tr {
+    height: 30px;
+}
+table thead {
+    background: beige;
+}
+table thead tr th{
+    font-size: .8rem;
+    font-weight: bold;
+    border: 2px solid;
+    padding: 0 .4rem;
+    text-align: center;
+    color: green;
+    border: 0;
+    padding-bottom: 2rem;
+    opacity: .8;
+}
+table th.thInputField{
+    position: relative;
+}
+table tbody tr{
+    border-bottom: 2px solid #bbb;
+}
+table tbody tr td{ 
+    padding: 1rem 0;
+    color: #505050;
+    font-size: .8rem;
+}
+table tbody tr td{
+    text-align: center;
+}
+.horasTrabalhadasTotal{
+    position: fixed;
+    top: 8%;
+    right: 5%;
+    background: rgba(255,255,255,0.8);
+    padding: 1rem;
+    border: 1px solid rgba(0,0,0,.5);
+    font-size: .8rem;
+    letter-spacing: .08rem;
+    z-index: 10;
+    color: lightseagreen;
+    font-weight: bolder;
+    text-shadow: 0.1rem 0.2rem 0.3rem white;
+}
+.horasTrabalhadasTotal span{
+    font-size: .8rem;
+    letter-spacing: .08rem;
+    font-weight: bolder;
+    text-shadow: 0.1rem 0.2rem 0.3rem white;
+}

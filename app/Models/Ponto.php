@@ -117,6 +117,11 @@
             }
         }
 
+        public function getAll($id){
+            $query = "SELECT data, hora_entrada,hora_saida,intervalo_saida,intervalo_volta,totalHorasTrabalhadas FROM registrodeponto WHERE colaborador_id=?";
+            return $this->selectAll($query, array($id));
+        }
+
         private function getAllPontos():int { 
             $query = "SELECT pontos_registrados FROM `empregado` WHERE id = ? AND ativo = 1";
             return $this->select($query, array($this->__get('id')))['pontos_registrados'];

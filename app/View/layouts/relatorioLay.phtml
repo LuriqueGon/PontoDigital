@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<?php $this->loadComponent('metaTags'); ?>
+	<?php $this->loadComponent('jqueryAwesome'); ?>
+	<?php $this->loadComponent('favico'); ?>
+
+	<link rel="stylesheet" href="/css/sidebar.css">
+	<link rel="stylesheet" href="/css/relatorioDePontos.css">
+	
+	<title>Ponto Digital | Registro De Ponto |</title>
+</head>
+
+<body >
+
+	<?php $this->loadComponent('toast')?>
+	<section class="containerContentGroup">
+		<?php $this->loadComponent('sidebar')?>
+		<div class="content">
+			<?php $this->content() ?>
+		</div>
+	</section>
+	
+
+</body>
+<script src="/script/relatorioDePontos.js"></script>
+
+</html>

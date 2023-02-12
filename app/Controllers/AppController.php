@@ -13,6 +13,12 @@
 
             $this->render('ponto', 'pontoLay');
         }
+        public function relatorioDePontos(){
+            $this->restrict();
+
+            $this->render('relatorioDePontos', 'relatorioLay');
+        }
+        
 
         public function registrarPontoEntrada(){
             $this->restrict();

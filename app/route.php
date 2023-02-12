@@ -47,6 +47,12 @@ use MF\Init\Bootstrap;
                 'controller' => 'AppController',
                 'action' => 'index'
             );
+            $routes['relatorioDePontos'] = array(
+                'route' => '/relatorioDePontos',
+                'controller' => 'AppController',
+                'action' => 'relatorioDePontos'
+            );
+            
             $routes['registrarPonto'] = array(
                 'route' => '/registrarPonto/Entrada',
                 'controller' => 'AppController',

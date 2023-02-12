@@ -37,12 +37,12 @@ header h2 i#close:hover{
     top: 1.5rem;
     left: 10rem;
     cursor: pointer;
-    transition: all .8s;
+    transition: all 1.3s;
     z-index: 10;
     display: block;
 }
 .hamb.open{
-    top: 6rem;
+    top: 6.5rem;
     left: 13.5rem;
 }
 .hamb.close{

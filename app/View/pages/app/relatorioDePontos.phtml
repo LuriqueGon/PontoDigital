@@ -1,0 +1,108 @@
+<?php
+
+    use MF\Model\Container;
+
+    
+
+    $ponto = Container::getModel('ponto');
+    $pontos = $ponto->getAll($_SESSION['user_id']);
+
+?>
+
+<header>
+    <h2>Apropriação de Horas</h2>
+</header>
+
+<aside>
+    <div class="inputLine inputRead">
+        <div class="inputCol">
+            <label for="">Colaborador</label>
+            <input type="text" value="<?php echo $_SESSION['nome'] ?>" readonly>
+        </div>
+        <div class="inputCol">
+            <label for="">Sessão</label>
+            <input type="text" value="<?php echo $_SESSION['sessão'] ?>" readonly>
+        </div>
+        <div class="inputCol">
+            <label for="">Cargo</label>
+            <input type="text" value="<?php echo empty($_SESSION['cargo'])?$_SESSION['status']:$_SESSION['cargo'] ?>" readonly>
+        </div>
+
+    </div>
+    <br><br>
+    <div class="inputLine date">
+        <div class="inputCol">
+            <label for="year-select">Ano:</label>
+            <select id="year-select">
+                <option value="">Todos</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+            </select>
+        </div>
+        <div class="inputCol">
+            <label for="month-select">Mês:</label>
+            <select id="month-select">
+                <option value="">Todos</option>
+                <option value="1">Jan</option>
+                <option value="2">Fev</option>
+                <option value="3">Mar</option>
+                <option value="4">Abr</option>
+                <option value="5">Mai</option>
+                <option value="6">Jun</option>
+                <option value="7">Jul</option>
+                <option value="8">Ago</option>
+                <option value="9">Set</option>
+                <option value="10">Out</option>
+                <option value="11">Nov</option>
+                <option value="12">Dez</option>
+            </select>
+        </div>
+        <div class="inputCol">
+            <label for="day-input">Dia:</label>
+            <input type="number" id="day-input" minlength="1" maxlength="2" min="1" max="31">
+        </div>
+    </div>
+
+</aside>
+<main>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Entrada</th>
+                <th>Saída</th>
+                <th>Almoço</th>
+                <th>Horas Trabalhadas</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            
+                foreach ($pontos as $key => $ponto) { 
+                    $date = new DateTime($ponto['data']);
+                    $ponto['data'] = $date->format("d-m-Y");
+                    $ponto['data'] = str_replace('-','/', $ponto['data']);
+                    
+                ?>
+                    <tr class="show">
+                        <td><?php echo $ponto['data'] ?></td>
+                        <td><?php echo $ponto['hora_entrada'] ?></td>
+                        <td><?php echo !empty($ponto['hora_saida']) ? $ponto['hora_saida'] : "00:00:00" ?></td>
+                        <td><?php echo $ponto['intervalo_saida'] ?> - <?php echo $ponto['intervalo_volta'] ?></td>
+                        <td class="horasTrabalhadas"><?php echo $ponto['totalHorasTrabalhadas'] ?></td>
+                        <td>| x | e |</td>
+                    </tr>
+                <?php }
+            
+            ?>
+        </tbody>
+    </table>
+</main>
+
+<div class="horasTrabalhadasTotal">
+    Total de Horas Trabalhadas:
+    <span class="horasTotal"></span>
+</div>

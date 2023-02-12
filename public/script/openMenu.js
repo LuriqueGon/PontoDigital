@@ -9,6 +9,6 @@ const openMenu = () => {
     if(document.querySelector('#filters.show')){
         setTimeout(e => {
             $('.hamb').toggleClass('close')
-        }, 900)
+        }, 1300)
     }
 }
