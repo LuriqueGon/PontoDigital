@@ -91,7 +91,7 @@
                         <td><?php echo $ponto['data'] ?></td>
                         <td><?php echo $ponto['hora_entrada'] ?></td>
                         <td><?php echo !empty($ponto['hora_saida']) ? $ponto['hora_saida'] : "00:00:00" ?></td>
-                        <td><?php echo $ponto['intervalo_saida'] ?> - <?php echo $ponto['intervalo_volta'] ?></td>
+                        <td><?php echo !empty($ponto['intervalo_saida']) ? $ponto['intervalo_saida'] : "00:00:00" ?> - <?php echo !empty($ponto['intervalo_volta']) ? $ponto['intervalo_volta'] : "00:00:00" ?></td>
                         <td class="horasTrabalhadas"><?php echo $ponto['totalHorasTrabalhadas'] ?></td>
                         <td>| x | e |</td>
                     </tr>
