@@ -6,15 +6,15 @@
     <div class="filter-group">
         <h4>Sessão</h4>
         <div class="filter-item">
-            <input type="checkbox" id="CozinhaA1" value="session-CozinhaA1">
+            <input type="checkbox" class="filterSession" id="CozinhaA1" value="CozinhaA1" onclick="filterTable()">
             <label for="CozinhaA1">CozinhaA1</label>
         </div>
         <div class="filter-item">
-            <input type="checkbox" id="Sistemas-e-Hardware" value="session-Sistemas-e-Hardware">
+            <input type="checkbox" class="filterSession" id="Sistemas-e-Hardware" value="Sistemas-e-Hardware"  onclick="filterTable()">
             <label for="Sistemas-e-Hardware">Sistemas e Hardware</label>
         </div>
         <div class="filter-item">
-            <input type="checkbox" id="Administração" value="session-Administração">
+            <input type="checkbox" class="filterSession" id="Administração" value="Administração" onclick="filterTable()">
             <label for="Administração">Administração</label>
         </div>
     </div>
@@ -22,42 +22,28 @@
     <div class="filter-group">
         <h4>Cargo</h4>
         <div class="filter-item">
-            <input type="checkbox" id="estagiario" value="cargo-estagiario">
+            <input type="checkbox" class="filterRole" onclick="filterTable()" id="estagiario" value="estagiario">
             <label for="estagiario">estagiario</label>
         </div>
         <div class="filter-item">
-            <input type="checkbox" id="Funcionario" value="cargo-Funcionario">
+            <input type="checkbox" class="filterRole" onclick="filterTable()" id="Funcionario" value="Funcionario">
             <label for="Funcionario">Funcionario</label>
         </div>
         <div class="filter-item">
-            <input type="checkbox" id="Admininstrador" value="cargo-Admininstrador">
+            <input type="checkbox" class="filterRole" onclick="filterTable()" id="Admininstrador" value="Admininstrador">
             <label for="Admininstrador">Admininstrador</label>
         </div>
         <div class="filter-item">
-            <input type="checkbox" id="Gestor" value="cargo-Gestor">
+            <input type="checkbox" class="filterRole" onclick="filterTable()" id="Gestor" value="Gestor">
             <label for="Gestor">Gestor</label>
         </div>
         <div class="filter-item">
-            <input type="checkbox" id="Chamada" value="cargo-Chamada">
+            <input type="checkbox" class="filterRole" onclick="filterTable()" id="Chamada" value="Chamada">
             <label for="Chamada">Chamada</label>
         </div>
         <div class="filter-item">
-            <input type="checkbox" id="Chefe-da-Sessao" value="cargo-Chefe-da-Sessao">
+            <input type="checkbox" class="filterRole" onclick="filterTable()" id="Chefe-da-Sessao" value="Chefe-da-Sessao">
             <label for="Chefe-da-Sessao">Chefe da Sessao</label>
         </div>
     </div>
-
-    <div class="filter-group">
-        <h4>Config</h4>
-        <div class="filter-item">
-            <input type="checkbox" id="ativo" value="config-ativo">
-            <label for="ativo">Ativo</label>
-        </div>
-        <div class="filter-item">
-            <input type="checkbox" id="pontoRegistrado" value="config-pontoRegistrado">
-            <label for="pontoRegistrado">Registrou Ponto Hoje</label>
-        </div>
-
-    </div>
-    <button id="apply-filters">Aplicar Filtros</button>
 </div>
